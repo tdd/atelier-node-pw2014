@@ -21,5 +21,6 @@
   },
   "homepage": "https://github.com/tdd/atelier-node-pw2014",
   "dependencies": {
+    "moment": "^2.8.3"
   }
 }
