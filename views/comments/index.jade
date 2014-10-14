@@ -1,0 +1,23 @@
+extend ../_layout
+
+block content
+  a.btn.btn-primary(href="/comments/new")
+    i.glyphicon.glyphicon-plus
+    |  Nouveau commentaire
+
+  hr
+
+  if comments.length
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Quand ?
+          th Quoi ?
+      tbody#commentsList
+        each comment in comments
+          tr
+            td= comment.postedAt
+            td: blockquote= comment.text
+
+  else
+    p Ahem, aucun commentaire pour le moment.  Rien, nacash.  Snif…

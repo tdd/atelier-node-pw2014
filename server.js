@@ -22,6 +22,7 @@ app.locals.title = 'Node.js démystifié';
 app.locals.pretty = devMode;
 
 require('./controllers/home')(app);
+require('./controllers/comments')(app);
 
 server.listen(app.get('port'), function() {
   console.log('✔︎︎ Express server listening on http://localhost:%d/'.green, app.get('port'));

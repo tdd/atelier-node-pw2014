@@ -1,0 +1,11 @@
+extend ../_layout
+
+block content
+  form(method="post" action="/comments" role="form")
+    p.form-group
+      label(for="text") Ton commentaire…
+      textarea#text.form-control(name="text" rows=5 required autofocus)
+    p
+      button.btn.btn-primary(type="submit")
+        i.glyphicon.glyphicon-ok
+        |  Envoyer le commentaire
