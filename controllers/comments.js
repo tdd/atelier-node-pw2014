@@ -19,6 +19,7 @@ var Comment = require('../models/comment');
 
 function createComment(req, res) {
   Comment.create({
+    author: req.user.id,
     text: req.body.text
   }).then(function() {
     req.flash('success', 'Ton commentaire a bien été ajouté.');
