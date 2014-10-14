@@ -6,21 +6,28 @@ module.exports = function commentsController(app) {
   app.post('/comments',     createComment);
 };
 
+var Comment = require('../models/comment');
+
 function createComment(req, res) {
-  var body = (req.body.text || '').trim();
-  if (body) {
+  Comment.create({
+    text: req.body.text
+  }).then(function() {
     req.flash('success', 'Ton commentaire a bien été ajouté.');
     res.redirect('/comments');
-  } else {
+  }).then(null, function(error) {
+    console.error(error);
     req.flash('error', 'Si tu mettais un texte ce serait mieux…');
     res.locals.flash = req.flash();
     res.status(400);
     newComment(req, res);
-  }
+  });
 }
 
 function listComments(req, res) {
-  res.render('comments/index', { title: 'Commentaires', comments: [] });
+  Comment.getAll()
+  .then(function(comments) {
+    res.render('comments/index', { title: 'Commentaires', comments: comments });
+  });
 }
 
 function newComment(req, res) {
