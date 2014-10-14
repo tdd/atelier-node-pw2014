@@ -3,6 +3,7 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var User = require('models/user');
 
 module.exports = function usersController(app) {
@@ -22,12 +23,14 @@ module.exports = function usersController(app) {
     failureFlash: true
   }));
 
-  app.get('/get-in/facebook', passport.authenticate('facebook'));
-  app.get('/get-in/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/comments',
-    failureRedirect: '/get-in',
-    failureFlash: true
-  }));
+  ['facebook', 'twitter'].forEach(function(provider) {
+    app.get('/get-in/' + provider, passport.authenticate(provider));
+    app.get('/get-in/' + provider + '/callback', passport.authenticate(provider, {
+      successRedirect: '/comments',
+      failureRedirect: '/get-in',
+      failureFlash: true
+    }));
+  });
 
   app.get ('/logout',       logOut);
 };
@@ -52,6 +55,18 @@ passport.use(new FacebookStrategy({
   callbackURL: '/get-in/facebook/callback'
 }, function(token, tokenSecret, profile, done) {
   User.findOrCreateByAuth(profile.id, profile.displayName, 'facebook', done);
+}));
+
+// Stratégie Twitter
+
+/* jshint maxparams:4 */
+passport.use(new TwitterStrategy({
+  // **Ne partagez pas ces clés Twitter n'importe où : [faites les vôtres](https://dev.twitter.com/apps/new) !**
+  consumerKey: '0mC7OanUtfH0ZHOn7xD7Aw',
+  consumerSecret: 'Ch8Fy2bFgIMnnlPyB9stgTkwO06yOu4Of3PjhiDaXA',
+  callbackURL: '/get-in/twitter/callback'
+}, function(token, tokenSecret, profile, done) {
+  User.findOrCreateByAuth('@' + profile.username, profile.displayName, 'twitter', done);
 }));
 
 passport.serializeUser(function(id, done) {
