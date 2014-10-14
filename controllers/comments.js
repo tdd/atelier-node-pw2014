@@ -1,6 +1,15 @@
 'use strict';
 
 module.exports = function commentsController(app) {
+  app.use('/comments', function(req, res, next) {
+    if (req.user) {
+      return next();
+    }
+
+    req.flash('info', 'Tu dois être authentifié(e) pour accéder aux commentaires.');
+    res.redirect('/get-in');
+  });
+
   app.get ('/comments',     listComments);
   app.get ('/comments/new', newComment);
   app.post('/comments',     createComment);

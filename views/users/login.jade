@@ -1,0 +1,16 @@
+extend ../_layout
+
+block content
+  .row
+    form.col-md-4(method="post" action="/get-in/local" role="form")
+      input(type="hidden" name="_csrf" value=csrf)
+      p.form-group
+        label(for="username") Identifiant
+        input#username.form-control(name="username" type="text" autofocus)
+      p.form-group
+        label(for="password") Mot de passe
+        input#password.form-control(name="password" type="password")
+      p
+        button.btn.btn-primary(type="submit")
+          i.glyphicon.glyphicon-sign-in
+          |  Je m’identifie

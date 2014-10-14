@@ -9,6 +9,17 @@ html(lang="fr")
     .navbar.navbar-default.navbar-static-top(role="navigation")
       .container
         a.navbar-brand(href="/") Atelier Node.js démystifié @ Paris Web 2014
+        if currentUser
+          .navbar-right
+            .navbar-text
+              | Salut #{currentUser.name} !
+            a.navbar-btn.btn.btn-default(href="/logout")
+              i.glyphicon.glyphicon-log-out
+              |  Me déconnecter
+        else
+          a.navbar-btn.btn.btn-default.navbar-right(href="/get-in")
+            i.glyphicon.glyphicon-log-in
+            |  Me connecter
     .container
       h1= title
 

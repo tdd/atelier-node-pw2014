@@ -9,6 +9,7 @@ var express       = require('express');
 var flash         = require('connect-flash');
 var http          = require('http');
 var morgan        = require('morgan');
+var passport      = require('passport');
 
 var app = express();
 var server = http.createServer(app);
@@ -23,11 +24,14 @@ app.use(cookieSession({ name: 'node-pw14:session', secret: "Node.js c’est de l
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(csrf());
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.locals.title = 'Node.js démystifié';
 app.locals.pretty = devMode;
 
 require('./helpers/main')(app);
+require('./controllers/users')(app);
 require('./controllers/home')(app);
 require('./controllers/comments')(app);
 
