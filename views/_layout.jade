@@ -1,0 +1,18 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+  body
+    .navbar.navbar-default.navbar-static-top(role="navigation")
+      .container
+        a.navbar-brand(href="/") Atelier Node.js démystifié @ Paris Web 2014
+    .container
+      h1= title
+
+      block content
+
+      hr
+      footer.text-center.text-muted Atelier Node.js démystifié @ Paris Web 2014

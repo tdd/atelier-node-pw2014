@@ -10,10 +10,14 @@ var app = express();
 var server = http.createServer(app);
 
 app.set('port', process.env.PORT || 3000);
+app.set('view engine', 'jade');
 
 var devMode = 'development' === app.get('env');
 
 app.use(morgan(devMode ? 'dev' : 'common'));
+
+app.locals.title = 'Node.js démystifié';
+app.locals.pretty = devMode;
 
 require('./controllers/home')(app);
 
