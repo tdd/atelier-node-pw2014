@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Atelier sur Node.js à Paris Web 2014",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon --debug server.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/tdd/atelier-node-pw2014.git"
