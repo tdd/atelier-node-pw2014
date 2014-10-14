@@ -10,6 +10,8 @@ var flash         = require('connect-flash');
 var http          = require('http');
 var morgan        = require('morgan');
 var passport      = require('passport');
+var path          = require('path');
+var serveStatic   = require('serve-static');
 
 var app = express();
 var server = http.createServer(app);
@@ -26,6 +28,7 @@ app.use(csrf());
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(serveStatic(path.join(__dirname, 'public')));
 
 app.locals.title = 'Node.js démystifié';
 app.locals.pretty = devMode;
@@ -34,6 +37,7 @@ require('./helpers/main')(app);
 require('./controllers/users')(app);
 require('./controllers/home')(app);
 require('./controllers/comments')(app);
+require('./controllers/web-sockets')(server);
 
 require('./models/connection')(function() {
   console.log('✔︎ Connected to mongoDB database'.green);

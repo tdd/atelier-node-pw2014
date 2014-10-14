@@ -37,6 +37,8 @@
     "passport-facebook": "^1.0.3",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.2",
+    "serve-static": "^1.6.4",
+    "socket.io": "^1.1.0",
     "underscore": "^1.7.0"
   }
 }

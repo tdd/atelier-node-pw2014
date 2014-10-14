@@ -1,0 +1,4 @@
+tr
+  td= comment.author ? comment.author.name : '—'
+  td= formatStamp(comment.postedAt)
+  td: blockquote= comment.text

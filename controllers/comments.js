@@ -16,12 +16,22 @@ module.exports = function commentsController(app) {
 };
 
 var Comment = require('../models/comment');
+var realTime = require('./web-sockets');
 
 function createComment(req, res) {
   Comment.create({
     author: req.user.id,
     text: req.body.text
-  }).then(function() {
+  }).then(function(comment) {
+    var notif = comment.toJSON();
+    notif.author = req.user;
+    res.render('comments/_comment', { comment: notif }, function(err, html) {
+      // Ignore errors for now
+      if (html) {
+        realTime.sockets.emit('new-comment', html.trim());
+      }
+    });
+
     req.flash('success', 'Ton commentaire a bien été ajouté.');
     res.redirect('/comments');
   }).then(null, function(error) {

@@ -16,10 +16,7 @@ block content
           th Quoi ?
       tbody#commentsList
         each comment in comments
-          tr
-            td= comment.author ? comment.author.name : '—'
-            td= formatStamp(comment.postedAt)
-            td: blockquote= comment.text
+          include _comment
 
   else
     p Ahem, aucun commentaire pour le moment.  Rien, nacash.  Snif…
