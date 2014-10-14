@@ -16,7 +16,7 @@ block content
       tbody#commentsList
         each comment in comments
           tr
-            td= comment.postedAt
+            td= formatStamp(comment.postedAt)
             td: blockquote= comment.text
 
   else
