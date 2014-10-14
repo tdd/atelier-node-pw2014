@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/tdd/atelier-node-pw2014",
   "dependencies": {
+    "colors": "^1.0.3",
+    "express": "^4.9.7",
     "moment": "^2.8.3"
   }
 }
