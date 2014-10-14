@@ -24,6 +24,7 @@
   "homepage": "https://github.com/tdd/atelier-node-pw2014",
   "dependencies": {
     "colors": "^1.0.3",
+    "cookie-session": "^1.0.2",
     "express": "^4.9.7",
     "jade": "^1.7.0",
     "moment": "^2.8.3",
