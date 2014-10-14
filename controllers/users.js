@@ -1,6 +1,7 @@
 'use strict';
 
 var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('models/user');
 
@@ -21,6 +22,13 @@ module.exports = function usersController(app) {
     failureFlash: true
   }));
 
+  app.get('/get-in/facebook', passport.authenticate('facebook'));
+  app.get('/get-in/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/comments',
+    failureRedirect: '/get-in',
+    failureFlash: true
+  }));
+
   app.get ('/logout',       logOut);
 };
 
@@ -32,6 +40,18 @@ passport.use(new LocalStrategy(function(userName, password, done) {
   }
 
   return done(null, false, { message: 'Identifiant ou mot de passe incorrects.' });
+}));
+
+// Stratégie Facebook
+
+/* jshint maxparams:4 */
+passport.use(new FacebookStrategy({
+  // **Ne partagez pas ces clés Facebook n'importe où : [faites les vôtres](https://developers.facebook.com/) !**
+  clientID: '213376528865347',
+  clientSecret: '753494ad3c02f9d9b5fb3617bbd88c1e',
+  callbackURL: '/get-in/facebook/callback'
+}, function(token, tokenSecret, profile, done) {
+  User.findOrCreateByAuth(profile.id, profile.displayName, 'facebook', done);
 }));
 
 passport.serializeUser(function(id, done) {
