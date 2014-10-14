@@ -7,9 +7,16 @@ module.exports = function commentsController(app) {
 };
 
 function createComment(req, res) {
-  console.log('query:', req.query);
-  console.log('body:', req.body);
-  res.sendStatus(201);
+  var body = (req.body.text || '').trim();
+  if (body) {
+    req.flash('success', 'Ton commentaire a bien été ajouté.');
+    res.redirect('/comments');
+  } else {
+    req.flash('error', 'Si tu mettais un texte ce serait mieux…');
+    res.locals.flash = req.flash();
+    res.status(400);
+    newComment(req, res);
+  }
 }
 
 function listComments(req, res) {

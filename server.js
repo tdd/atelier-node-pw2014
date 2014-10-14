@@ -6,6 +6,7 @@ var bodyParser    = require('body-parser');
 var cookieSession = require('cookie-session');
 var csrf          = require('csurf');
 var express       = require('express');
+var flash         = require('connect-flash');
 var http          = require('http');
 var morgan        = require('morgan');
 
@@ -21,10 +22,12 @@ app.use(morgan(devMode ? 'dev' : 'common'));
 app.use(cookieSession({ name: 'node-pw14:session', secret: "Node.js c’est de la balle !" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(csrf());
+app.use(flash());
 
 app.locals.title = 'Node.js démystifié';
 app.locals.pretty = devMode;
 
+require('./helpers/main')(app);
 require('./controllers/home')(app);
 require('./controllers/comments')(app);
 
