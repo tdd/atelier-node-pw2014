@@ -31,6 +31,10 @@ require('./helpers/main')(app);
 require('./controllers/home')(app);
 require('./controllers/comments')(app);
 
-server.listen(app.get('port'), function() {
-  console.log('✔︎︎ Express server listening on http://localhost:%d/'.green, app.get('port'));
+require('./models/connection')(function() {
+  console.log('✔︎ Connected to mongoDB database'.green);
+
+  server.listen(app.get('port'), function() {
+    console.log('✔︎︎ Express server listening on http://localhost:%d/'.green, app.get('port'));
+  });
 });
