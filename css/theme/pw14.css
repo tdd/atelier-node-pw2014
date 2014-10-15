@@ -1,0 +1,675 @@
+@font-face {
+  font-family: 'Canter';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Canter Light"), url("../fonts/Canter Light.otf");
+}
+
+@font-face {
+  font-family: 'Canter';
+  font-style: normal;
+  font-weight: bold;
+  src: local("Canter Bold"), url("../fonts/Canter Bold.otf");
+}
+
+@font-face {
+  font-family: 'Canter Shadow';
+  font-style: normal;
+  src: local("Canter Bold Shadow"), url("../fonts/Canter Bold Shadow.otf");
+}
+
+@font-face {
+  font-family: 'Canter Strips';
+  font-style: normal;
+  src: local("Canter Bold Strips"), url("../fonts/Canter Bold Strips.otf");
+}
+
+@font-face {
+  font-family: 'Dense';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Dense"), local("Dense-Regular"), url("../fonts/Dense-Regular.otf");
+}
+
+@font-face {
+  font-family: 'Sabado';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Sabado"), local("Sabado Regular"), url("../fonts/Sabado Regular.otf");
+}
+
+@font-face {
+  font-family: 'Sabado';
+  font-style: italic;
+  font-weight: 400;
+  src: local("Sabado Italic"), url("../fonts/Sabado Italic.otf");
+}
+
+@font-face {
+  font-family: 'Track';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Track"), url("../fonts/Track.otf");
+}
+
+@font-face {
+  font-family: 'Track';
+  font-style: italic;
+  font-weight: 400;
+  src: local("Track Italic"), url("../fonts/Track Italic.otf");
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h2 + h4 {
+  font-family: Track;
+  letter-spacing: 0.01em;
+}
+
+/* SILVER GREEN */
+
+.theme-color-silver-green {
+  background-color: #ddd;
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #fff 0%, #ddd 100%);
+  background-image: radial-gradient(circle farthest-corner at center, #fff 0%, #ddd 100%)
+}
+
+.theme-color-silver-green body {
+  background: transparent
+}
+
+.theme-color-silver-green .theme-body-color-block {
+  background: #111
+}
+
+.theme-color-silver-green .theme-link-color-block {
+  background: #039426
+}
+
+.theme-color-silver-green .themed,.theme-color-silver-green .reveal {
+  color: #111
+}
+
+.theme-color-silver-green .themed a,.theme-color-silver-green .reveal a,
+.theme-color-silver-green .reveal h1,
+.theme-color-silver-green .reveal h2,
+.theme-color-silver-green .reveal h3,
+.theme-color-silver-green .reveal h4,
+.theme-color-silver-green .reveal h5,
+.theme-color-silver-green .reveal h6 {
+  color: #039426
+}
+
+.theme-color-silver-green .themed a:hover,.theme-color-silver-green .reveal a:hover {
+  color: #04c633
+}
+
+.theme-color-silver-green .themed .controls div.navigate-left,.theme-color-silver-green .themed .controls div.navigate-left.enabled,.theme-color-silver-green .reveal .controls div.navigate-left,.theme-color-silver-green .reveal .controls div.navigate-left.enabled {
+  border-right-color: #039426
+}
+
+.theme-color-silver-green .themed .controls div.navigate-right,.theme-color-silver-green .themed .controls div.navigate-right.enabled,.theme-color-silver-green .reveal .controls div.navigate-right,.theme-color-silver-green .reveal .controls div.navigate-right.enabled {
+  border-left-color: #039426
+}
+
+.theme-color-silver-green .themed .controls div.navigate-up,.theme-color-silver-green .themed .controls div.navigate-up.enabled,.theme-color-silver-green .reveal .controls div.navigate-up,.theme-color-silver-green .reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #039426
+}
+
+.theme-color-silver-green .themed .controls div.navigate-down,.theme-color-silver-green .themed .controls div.navigate-down.enabled,.theme-color-silver-green .reveal .controls div.navigate-down,.theme-color-silver-green .reveal .controls div.navigate-down.enabled {
+  border-top-color: #039426
+}
+
+.theme-color-silver-green .themed .controls div.navigate-left.enabled:hover,.theme-color-silver-green .reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #04c633
+}
+
+.theme-color-silver-green .themed .controls div.navigate-right.enabled:hover,.theme-color-silver-green .reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #04c633
+}
+
+.theme-color-silver-green .themed .controls div.navigate-up.enabled:hover,.theme-color-silver-green .reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #04c633
+}
+
+.theme-color-silver-green .themed .controls div.navigate-down.enabled:hover,.theme-color-silver-green .reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #04c633
+}
+
+.theme-color-silver-green .themed .progress,.theme-color-silver-green .reveal .progress {
+  background: rgba(0,0,0,0.2)
+}
+
+.theme-color-silver-green .themed .progress span,.theme-color-silver-green .reveal .progress span {
+  background: #039426;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985)
+}
+
+/* BLUE YELLOW */
+
+.theme-color-blue-yellow {
+  background-image: url(patterns/congruent_outline.png);
+  background-color: #44a0dd;
+  background-blend-mode: soft-light;
+}
+
+.theme-color-blue-yellow body {
+  background: transparent
+}
+
+.theme-color-blue-yellow .theme-body-color-block {
+  background: #fff
+}
+
+.theme-color-blue-yellow .theme-link-color-block {
+  background: #ecec6a
+}
+
+.theme-color-blue-yellow .themed,.theme-color-blue-yellow .reveal {
+  color: #fff
+}
+
+.theme-color-blue-yellow .themed a,.theme-color-blue-yellow .reveal a,
+.theme-color-blue-yellow .reveal h1,
+.theme-color-blue-yellow .reveal h2,
+.theme-color-blue-yellow .reveal h3,
+.theme-color-blue-yellow .reveal h4,
+.theme-color-blue-yellow .reveal h5,
+.theme-color-blue-yellow .reveal h6 {
+  color: #ecec6a
+}
+
+.theme-color-blue-yellow .reveal p code,
+.theme-color-blue-yellow .reveal li code {
+  color: yellow; font-size: 105%;
+}
+
+.theme-color-blue-yellow .themed a:hover,.theme-color-blue-yellow .reveal a:hover {
+  color: #f8f8c4
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-left,.theme-color-blue-yellow .themed .controls div.navigate-left.enabled,.theme-color-blue-yellow .reveal .controls div.navigate-left,.theme-color-blue-yellow .reveal .controls div.navigate-left.enabled {
+  border-right-color: #ecec6a
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-right,.theme-color-blue-yellow .themed .controls div.navigate-right.enabled,.theme-color-blue-yellow .reveal .controls div.navigate-right,.theme-color-blue-yellow .reveal .controls div.navigate-right.enabled {
+  border-left-color: #ecec6a
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-up,.theme-color-blue-yellow .themed .controls div.navigate-up.enabled,.theme-color-blue-yellow .reveal .controls div.navigate-up,.theme-color-blue-yellow .reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #ecec6a
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-down,.theme-color-blue-yellow .themed .controls div.navigate-down.enabled,.theme-color-blue-yellow .reveal .controls div.navigate-down,.theme-color-blue-yellow .reveal .controls div.navigate-down.enabled {
+  border-top-color: #ecec6a
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-left.enabled:hover,.theme-color-blue-yellow .reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #f8f8c4
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-right.enabled:hover,.theme-color-blue-yellow .reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #f8f8c4
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-up.enabled:hover,.theme-color-blue-yellow .reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #f8f8c4
+}
+
+.theme-color-blue-yellow .themed .controls div.navigate-down.enabled:hover,.theme-color-blue-yellow .reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #f8f8c4
+}
+
+.theme-color-blue-yellow .themed .progress,.theme-color-blue-yellow .reveal .progress {
+  background: rgba(0,0,0,0.2)
+}
+
+.theme-color-blue-yellow .themed .progress span,.theme-color-blue-yellow .reveal .progress span {
+  background: #ecec6a;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985)
+}
+
+/* FOREST YELLOW */
+
+.theme-color-forest-yellow {
+  background-image: url(patterns/shattered.png);
+  background-color: #2ba056;
+  background-blend-mode: multiply;
+}
+
+.theme-color-forest-yellow body {
+  background: transparent
+}
+
+.theme-color-forest-yellow .theme-body-color-block {
+  background: #fff
+}
+
+.theme-color-forest-yellow .theme-link-color-block {
+  background: #ecec6a
+}
+
+.theme-color-forest-yellow .themed,.theme-color-forest-yellow .reveal {
+  color: #fff
+}
+
+.theme-color-forest-yellow .themed a,.theme-color-forest-yellow .reveal a,
+.theme-color-forest-yellow .reveal h1,
+.theme-color-forest-yellow .reveal h2,
+.theme-color-forest-yellow .reveal h3,
+.theme-color-forest-yellow .reveal h4,
+.theme-color-forest-yellow .reveal h5,
+.theme-color-forest-yellow .reveal h6 {
+  color: #ecec6a
+}
+
+.theme-color-forest-yellow .themed a:hover,.theme-color-forest-yellow .reveal a:hover {
+  color: #f8f8c4
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-left,.theme-color-forest-yellow .themed .controls div.navigate-left.enabled,.theme-color-forest-yellow .reveal .controls div.navigate-left,.theme-color-forest-yellow .reveal .controls div.navigate-left.enabled {
+  border-right-color: #ecec6a
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-right,.theme-color-forest-yellow .themed .controls div.navigate-right.enabled,.theme-color-forest-yellow .reveal .controls div.navigate-right,.theme-color-forest-yellow .reveal .controls div.navigate-right.enabled {
+  border-left-color: #ecec6a
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-up,.theme-color-forest-yellow .themed .controls div.navigate-up.enabled,.theme-color-forest-yellow .reveal .controls div.navigate-up,.theme-color-forest-yellow .reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #ecec6a
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-down,.theme-color-forest-yellow .themed .controls div.navigate-down.enabled,.theme-color-forest-yellow .reveal .controls div.navigate-down,.theme-color-forest-yellow .reveal .controls div.navigate-down.enabled {
+  border-top-color: #ecec6a
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-left.enabled:hover,.theme-color-forest-yellow .reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #f8f8c4
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-right.enabled:hover,.theme-color-forest-yellow .reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #f8f8c4
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-up.enabled:hover,.theme-color-forest-yellow .reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #f8f8c4
+}
+
+.theme-color-forest-yellow .themed .controls div.navigate-down.enabled:hover,.theme-color-forest-yellow .reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #f8f8c4
+}
+
+.theme-color-forest-yellow .themed .progress,.theme-color-forest-yellow .reveal .progress {
+  background: rgba(0,0,0,0.2)
+}
+
+.theme-color-forest-yellow .themed .progress span,.theme-color-forest-yellow .reveal .progress span {
+  background: #ecec6a;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985)
+}
+
+/* ASPHALT ORANGE */
+
+.theme-color-asphalt-orange {
+  background-image:
+    -webkit-radial-gradient(center, circle farthest-corner, #415b77 0%, #2c3e50 100%),
+    url(patterns/shattered.png);
+  background-image:
+    radial-gradient(circle farthest-corner at center, #415b77 0%, #2c3e50 100%),
+    url(patterns/shattered.png);
+  background-color: #2c3e50;
+  background-blend-mode: soft-light;
+}
+
+.theme-color-asphalt-orange body {
+  background: transparent
+}
+
+.theme-color-asphalt-orange .theme-body-color-block {
+  background: #fff
+}
+
+.theme-color-asphalt-orange .theme-link-color-block {
+  background: #ffc200
+}
+
+.theme-color-asphalt-orange .themed,.theme-color-asphalt-orange .reveal {
+  color: #fff
+}
+
+.theme-color-asphalt-orange .themed a,.theme-color-asphalt-orange .reveal a,
+.theme-color-asphalt-orange .reveal h1,
+.theme-color-asphalt-orange .reveal h2,
+.theme-color-asphalt-orange .reveal h3,
+.theme-color-asphalt-orange .reveal h4,
+.theme-color-asphalt-orange .reveal h5,
+.theme-color-asphalt-orange .reveal h6 {
+  color: #ffc200
+}
+
+.theme-color-asphalt-orange .themed a:hover,.theme-color-asphalt-orange .reveal a:hover {
+  color: #ffda66
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-left,.theme-color-asphalt-orange .themed .controls div.navigate-left.enabled,.theme-color-asphalt-orange .reveal .controls div.navigate-left,.theme-color-asphalt-orange .reveal .controls div.navigate-left.enabled {
+  border-right-color: #ffc200
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-right,.theme-color-asphalt-orange .themed .controls div.navigate-right.enabled,.theme-color-asphalt-orange .reveal .controls div.navigate-right,.theme-color-asphalt-orange .reveal .controls div.navigate-right.enabled {
+  border-left-color: #ffc200
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-up,.theme-color-asphalt-orange .themed .controls div.navigate-up.enabled,.theme-color-asphalt-orange .reveal .controls div.navigate-up,.theme-color-asphalt-orange .reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #ffc200
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-down,.theme-color-asphalt-orange .themed .controls div.navigate-down.enabled,.theme-color-asphalt-orange .reveal .controls div.navigate-down,.theme-color-asphalt-orange .reveal .controls div.navigate-down.enabled {
+  border-top-color: #ffc200
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-left.enabled:hover,.theme-color-asphalt-orange .reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #ffda66
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-right.enabled:hover,.theme-color-asphalt-orange .reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #ffda66
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-up.enabled:hover,.theme-color-asphalt-orange .reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #ffda66
+}
+
+.theme-color-asphalt-orange .themed .controls div.navigate-down.enabled:hover,.theme-color-asphalt-orange .reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #ffda66
+}
+
+.theme-color-asphalt-orange .themed .progress,.theme-color-asphalt-orange .reveal .progress {
+  background: rgba(0,0,0,0.2)
+}
+
+.theme-color-asphalt-orange .themed .progress span,.theme-color-asphalt-orange .reveal .progress span {
+  background: #ffc200;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985)
+}
+
+.theme-color-asphalt-orange .reveal p code,
+.theme-color-asphalt-orange .reveal li code {
+  color: #ffc200; font-size: 105%;
+}
+
+/* MINT BEIGE */
+
+.theme-color-mint-beige {
+  background-image:
+    -webkit-radial-gradient(center, circle farthest-corner, #2aa57e 0%, #207c5f 100%),
+    url(patterns/congruent_outline.png);
+  background-image: radial-gradient(circle farthest-corner at center, #2aa57e 0%, #207c5f 100%),
+    url(patterns/congruent_outline.png);
+  background-color: #207c5f;
+  background-blend-mode: soft-light;
+}
+
+.theme-color-mint-beige body {
+  background: transparent
+}
+
+.theme-color-mint-beige .theme-body-color-block {
+  background: #fff
+}
+
+.theme-color-mint-beige .theme-link-color-block {
+  background: #ecec6a
+}
+
+.theme-color-mint-beige .themed,.theme-color-mint-beige .reveal {
+  color: #fff
+}
+
+.theme-color-mint-beige .themed a,.theme-color-mint-beige .reveal a,
+.theme-color-mint-beige .reveal h1,
+.theme-color-mint-beige .reveal h2,
+.theme-color-mint-beige .reveal h3,
+.theme-color-mint-beige .reveal h4,
+.theme-color-mint-beige .reveal h5,
+.theme-color-mint-beige .reveal h6 {
+  color: #ecec6a
+}
+
+.theme-color-mint-beige .themed a:hover,.theme-color-mint-beige .reveal a:hover {
+  color: #f8f8c4
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-left,.theme-color-mint-beige .themed .controls div.navigate-left.enabled,.theme-color-mint-beige .reveal .controls div.navigate-left,.theme-color-mint-beige .reveal .controls div.navigate-left.enabled {
+  border-right-color: #ecec6a
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-right,.theme-color-mint-beige .themed .controls div.navigate-right.enabled,.theme-color-mint-beige .reveal .controls div.navigate-right,.theme-color-mint-beige .reveal .controls div.navigate-right.enabled {
+  border-left-color: #ecec6a
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-up,.theme-color-mint-beige .themed .controls div.navigate-up.enabled,.theme-color-mint-beige .reveal .controls div.navigate-up,.theme-color-mint-beige .reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #ecec6a
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-down,.theme-color-mint-beige .themed .controls div.navigate-down.enabled,.theme-color-mint-beige .reveal .controls div.navigate-down,.theme-color-mint-beige .reveal .controls div.navigate-down.enabled {
+  border-top-color: #ecec6a
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-left.enabled:hover,.theme-color-mint-beige .reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #f8f8c4
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-right.enabled:hover,.theme-color-mint-beige .reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #f8f8c4
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-up.enabled:hover,.theme-color-mint-beige .reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #f8f8c4
+}
+
+.theme-color-mint-beige .themed .controls div.navigate-down.enabled:hover,.theme-color-mint-beige .reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #f8f8c4
+}
+
+.theme-color-mint-beige .themed .progress,.theme-color-mint-beige .reveal .progress {
+  background: rgba(0,0,0,0.2)
+}
+
+.theme-color-mint-beige .themed .progress span,.theme-color-mint-beige .reveal .progress span {
+  background: #ecec6a;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985)
+}
+
+/* CORAL BLUE */
+
+.theme-color-coral-blue {
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #d59177 0%, #c97150 100%);
+  background-image: radial-gradient(circle farthest-corner at center, #d59177 0%, #c97150 100%);
+  background-color: #c97150;
+}
+
+.theme-color-coral-blue body {
+  background: transparent
+}
+
+.theme-color-coral-blue .theme-body-color-block {
+  background: #fff
+}
+
+.theme-color-coral-blue .theme-link-color-block {
+  background: #3a65c0
+}
+
+.theme-color-coral-blue .themed,.theme-color-coral-blue .reveal {
+  color: #fff
+}
+
+.theme-color-coral-blue .themed a,.theme-color-coral-blue .reveal a,
+.theme-color-coral-blue .reveal h1,
+.theme-color-coral-blue .reveal h2,
+.theme-color-coral-blue .reveal h3,
+.theme-color-coral-blue .reveal h4,
+.theme-color-coral-blue .reveal h5,
+.theme-color-coral-blue .reveal h6 {
+  color: #3a65c0
+}
+
+.theme-color-coral-blue .themed a:hover,.theme-color-coral-blue .reveal a:hover {
+  color: #86a1da
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-left,.theme-color-coral-blue .themed .controls div.navigate-left.enabled,.theme-color-coral-blue .reveal .controls div.navigate-left,.theme-color-coral-blue .reveal .controls div.navigate-left.enabled {
+  border-right-color: #3a65c0
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-right,.theme-color-coral-blue .themed .controls div.navigate-right.enabled,.theme-color-coral-blue .reveal .controls div.navigate-right,.theme-color-coral-blue .reveal .controls div.navigate-right.enabled {
+  border-left-color: #3a65c0
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-up,.theme-color-coral-blue .themed .controls div.navigate-up.enabled,.theme-color-coral-blue .reveal .controls div.navigate-up,.theme-color-coral-blue .reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #3a65c0
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-down,.theme-color-coral-blue .themed .controls div.navigate-down.enabled,.theme-color-coral-blue .reveal .controls div.navigate-down,.theme-color-coral-blue .reveal .controls div.navigate-down.enabled {
+  border-top-color: #3a65c0
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-left.enabled:hover,.theme-color-coral-blue .reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #86a1da
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-right.enabled:hover,.theme-color-coral-blue .reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #86a1da
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-up.enabled:hover,.theme-color-coral-blue .reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #86a1da
+}
+
+.theme-color-coral-blue .themed .controls div.navigate-down.enabled:hover,.theme-color-coral-blue .reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #86a1da
+}
+
+.theme-color-coral-blue .themed .progress,.theme-color-coral-blue .reveal .progress {
+  background: rgba(0,0,0,0.2)
+}
+
+.theme-color-coral-blue .themed .progress span,.theme-color-coral-blue .reveal .progress span {
+  background: #3a65c0;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985)
+}
+
+/* OTHER TWEAKS */
+
+.reveal .slides { width: 980px; }
+
+span[lang], strong[lang] { font-style: italic; }
+em span[lang], em strong[lang] { font-style: normal; }
+
+.reveal h2 { font-size: 1.95em; }
+.reveal h2 + h4 { margin-top: -0.6em; font-size: 0.8em; }
+.reveal p code, .reveal li code { color: #4169e1; }
+
+.reveal pre {
+  width: 100%;
+  line-height: 1.3em;
+}
+
+.reveal pre code {
+  font-size: 1.2em;
+  max-height: none;
+}
+
+.reveal section img.schema {
+  border: none;
+  box-shadow: none;
+}
+
+.reveal h3 code {
+  text-transform: none;
+  font-size: 130%;
+}
+
+.reveal pre > code > .implied {
+  display: block; margin: 0;
+  opacity: 0.8;
+  background: #e9e9e9;
+}
+.reveal pre > code > .implied:first-child {
+  border-bottom: 0.1em solid silver;
+}
+.reveal pre > code > .implied:last-child {
+  margin-top: 1em;
+  border-top: 0.1em solid silver;
+}
+
+.reveal pre > code .comment > a {
+  color: #8e908c;
+  text-decoration: underline;
+}
+.reveal pre > code .comment > a:hover,
+.reveal pre > code .comment > a:focus {
+  color: black;
+}
+
+.reveal section > footer {
+  margin-top: 2em;
+  font-size: 70%;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.reveal li + li { margin-top: 0.5em; }
+
+.reveal section ul, .reveal section ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.reveal section ul.narrow, .reveal section ol.narrow {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.reveal ul.narrow > li + li, .reveal ol.narrow > li + li {
+  margin-top: 0.3em;
+}
+
+.reveal section p + h4 { margin: 1em 0; }
+
+.reveal section .breathing { margin: 1em 0; }
+
+b.wrong, b.right {
+  font-weight: normal;
+  padding: 0.1em 0.5em 0.1em 0; border-radius: 0.5em;
+}
+b.wrong:empty, b.right:empty { padding-left: 0.5em; }
+b.wrong { background: #fdd; }
+b.wrong::after {
+  content: " ✖ KO";
+  font-weight: bold;
+  color: #b00;
+}
+
+b.right { background: #dfd; }
+b.right::after {
+  content: " ✔ OK";
+  font-weight: bold;
+  color: #090;
+}
+
+.reveal pre > code u, b.hl {
+  background: #fe9; padding: 0.1em 0.3em; border-radius: 0.5em;
+  text-decoration: none;
+}
+
+.theme-color-coral-blue h3 code {
+  color: yellow;
+}
+
+#qrcode {
+  border: none;
+  border-radius: 1em;
+}

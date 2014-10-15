@@ -1,0 +1,7 @@
+{
+  "curly": false,
+  "maxdepth": 4,
+  "eqnull": true,
+  "expr": true,
+  "sub": true
+}

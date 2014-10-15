@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JS + toi = &hearts; • Christophe Porteneuve @ Paris Web 2014</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/animate.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme-basis">
+		<link rel="stylesheet" href="css/theme/pw14.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/tomorrow.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-43650325-1', 'delicious-insights.com');
+       ga('send', 'pageview');
+     </script>
+	</head>
+
+	<body id="prioFix">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>JS + toi = &hearts;</h1>
+					<h3>Promis, ça ne fait pas mal</h3>
+					<p>
+						<small>Une présentation de <a href="http://tddsworld.com/">Christophe Porteneuve</a> à <a href="http://www.paris-web.fr/">Paris Web 2014</a></small>
+					</p>
+				</section>
+
+				<section id="whoami">
+					<h2>TÉKITOA</h2>
+
+					<pre><code data-trim class="javascript">
+var christophe = {
+  age:        36.94794520547945,
+  city:       'Paris',
+  company:    'Delicious Insights',
+  trainings:  ['JS Total', 'Node.js', 'Git Total'],
+  jsSince:    1995,
+  claimsToFame: [
+    'Prototype.js',
+    'Ruby On Rails',
+    'Bien Développer pour le Web 2.0',
+    'Prototype and Script.aculo.us',
+    'Paris Web'
+  ]
+};
+          </code></pre>
+				</section>
+
+        <section id="abstract">
+          <h2>En 30 minutes</h2>
+          <h3>Ne clignez pas des yeux !</h3>
+
+          <p>Tenter de bien comprendre les 3 plus gros concepts-clés de JavaScript, histoire d’enfin passer la cinquième.</p>
+
+          <br>
+
+          <ol>
+            <li>Les prototypes (héritage compris)</li>
+            <li>Les <span lang="en">closures</span> (fermetures lexicales)</li>
+            <li>Le <span lang="en">binding</span> (« où est mon <code>this</code> ?! »)</li>
+          </ol>
+        </section>
+
+				<section data-state="theme-color-blue-yellow">
+					<section id="prototypes">
+						<h1>Prototypes</h1>
+					</section>
+
+          <section id="prototypes-not-just-classical-oop">
+            <h2>Z'êtes trop classiques</h2>
+
+            <p>JS est bien plus orienté objet que Java, C++, Python…</p>
+            <p>POO = <strong>« classique »</strong> (basique) + <strong>prototypale</strong></p>
+            <p>La 2nde est un sur-ensemble de la 1ère.</p>
+            <p>Simplement parce qu'on n’a pas <code>class</code>, <code>extends</code> et <code>super</code> ne veut pas dire qu’on n’est pas objet… (cf. ES6 / CoffeeScript)</p>
+          </section>
+
+          <section id="prototypes-concepts">
+            <h2>La POO prototypale</h2>
+
+            <p>Chaque objet est construit en <strong>se basant sur un autre</strong>.</p>
+            <p>On a des langages « purs prototypes », genre <strong>io</strong>.</p>
+            <p>Pas de distinction classe / objet, pas de schéma figé.</p>
+            <p>Facilite la plupart des <strong lang="en">design patterns</strong>.</p>
+          </section>
+
+          <section id="prototypes-constructors">
+            <h2>Constructeurs</h2>
+
+            <p>Toute fonction est un constructeur potentiel.</p>
+            <p>Pas inhérent à la fonction : dû à l’appel avec <code>new</code>.</p>
+
+            <pre><code data-trim data-noescape class="javascript">
+function Talk(options) {
+<span class="fragment"><u>  if (!(this instanceof Talk)) {
+      throw new Error('Et le new, eh, patate !');
+    }</u></span>
+  this.event    = options.event;
+  this.title    = options.title;
+  this.speaker  = options.speaker;
+  this.startsAt = new Date(options.startsAt);
+  this.duration = options.duration;
+}
+
+var talk = new Talk({
+  event: 'Paris Web 2014',
+  title: 'JS + toi = &lt;3',
+  speaker: 'Christophe',
+  startsAt: '2014-10-16 10:30',
+  duration: 30
+});
+            </code></pre>
+          </section>
+
+          <section id="prototypes-mental-model">
+            <h2>Pensez-y comme à…</h2>
+
+            <p>En gros, le conteneur des <strong>méthodes d’instance</strong>.</p>
+            <p>Constructeur + Prototype ≈ concept habituel de Classe.</p>
+          </section>
+
+          <section id="prototypes-where-are-they">
+            <h2>Où sont-ils ?</h2>
+            <h4>Quels sont leurs réseaux ?</h4>
+
+            <p>Toute fonction est dotée d’un prototype par JS.</p>
+            <p>Accessible via la propriété <code>prototype</code> de la fonction.</p>
+
+            <pre><code data-trim class="javascript">
+function foo() {}
+foo.prototype // => Object {}
+            </code></pre>
+
+            <img class="schema" src="assets/protos-where.png">
+          </section>
+
+          <section id="prototypes-what-are-they">
+            <h2>Que sont-ils ?</h2>
+            <h4>Leur stratégie pour la France</h4>
+
+            <p>Par défaut, un simple <code>Object</code> avec une propriété <code>constructor</code> (non-énumérable*).</p>
+
+            <img src="assets/protos-what.png" class="schema">
+
+            <footer>* ça veut dire invisible au <code>for…in</code></footer>
+          </section>
+
+          <section id="prototypes-add-a-method">
+            <h2>Ajouter une méthode</h2>
+            <h4>d’instance à une « classe »</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+
+<b class="right">Talk.prototype.toPDF = function toPDF() {</b>
+  this.slides.forEach(…);
+};
+
+<span class="fragment">
+// Ou plus en série, quand on en a plein :
+<b class="right">$.extend(Talk.prototype, {</b>
+  print: function print() { … },
+  run:   function run() { … },
+  toPDF: function toPDF() { … }
+  …
+});</span>
+            </code></pre>
+          </section>
+
+          <section id="prototypes-faster">
+            <h2>La version débile</h2>
+            <h4>qu'on voit donc dans plein de tutos</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+function Talk(options) {
+  // définition des « attributs », puis :
+
+<b class="wrong">  this.run = function run() { … };
+  this.toPDF = function toPDF() { … };</b>
+  …
+}
+            </code></pre>
+
+            <img src="assets/inlined-methods.png" class="schema">
+
+            <p>plus lourd, moins pratique…</p>
+          </section>
+
+          <section id="prototypes-lookup-chain-1">
+            <h2>La chaîne de lookup</h2>
+            <h4>Passe le message à ton voisin</h4>
+
+            <p><code>obj.prop</code> ou <code>obj['prop']</code>, peu importe…</p>
+
+            <ol>
+              <li>On part de l’objet indexé (<code>obj</code>)</li>
+              <li>Si on trouve <code>prop</code> dans ses <span lang="en">own properties</span>, on s’arrête là</li>
+              <li>Sinon, on passe sur le prototype du niveau supérieur : celui du constructeur de l’objet en cours*</li>
+              <li>On reprend à l’étape 2, sauf si on était déjà sur <code>Object.prototype</code>, auquel cas le lookup est fini, et échoue (<code>undefined</code>).</li>
+            </ol>
+
+            <footer>* conceptuellement, <code>constructor.prototype</code> ou <code>__proto__</code></footer>
+          </section>
+
+          <section id="prototypes-lookup-chain-2">
+            <h2>La chaîne de lookup</h2>
+
+            <img src="assets/lookup-chain.png" class="schema">
+          </section>
+
+          <section id="prototypes-lookup-demo">
+            <h2>La preuve en images</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+}
+Person.prototype.fullName = function fullName() {
+  return this.first + ' ' + this.last;
+};
+var roiDeLaClasse = new Person('Georges', 'Abitbol');
+
+<span class="fragment">roiDeLaClasse.first      // => 'Georges',         own property</span>
+<span class="fragment">roiDeLaClasse.fullName() // => 'Georges Abitbol', Person.prototype</span>
+<span class="fragment">roiDeLaClasse.toString() // => '[object Object]', Object.prototype</span>
+
+<span class="fragment">Person.prototype.toString = function personToString() {
+  return '#Person&lt;' + this.fullName() + '>';
+};
+
+roiDeLaClasse.toString() // => '#Person&lt;George Abitbol>'</span>
+            </code></pre>
+          </section>
+
+          <section id="prototypes-inheritance">
+            <h2>Lookup ➜ héritage</h2>
+
+            <img src="assets/lookup-inheritance.png" class="schema">
+          </section>
+
+          <section id="prototypes-super-method">
+            <h2>Version héritée</h2>
+            <h4>d’une méthode</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+Workshop.prototype.run = function runWorkshop() {
+  // Pré-code
+
+  <u>Talk.prototype.apply(this, arguments);</u> // "super()"
+  <span class="fragment">// ou plus spécifique, par exemple :
+  <u>Talk.prototype.call</u>(this, this.attendees); // "super(this.attendees)"</span>
+
+  // Post-code
+};
+            </code></pre>
+          </section>
+
+          <section id="prototypes-super-cons">
+            <h2>Version héritée</h2>
+            <h4>du constructeur</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+function Workshop(options) {
+  <u>Talk.call(this, options);</u>
+
+  // Post-code, par exemple :
+  this.attendees = options.attendees;
+  this.resourcesURL = options.resourceURL;
+  // …
+};
+            </code></pre>
+          </section>
+
+          <section id="prototypes-bad-tutorials">
+            <h2>Les méchants tutos</h2>
+            <h4>qui disent n'importe nawak</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+function Workshop(options) { … }
+<b class="wrong">Workshop.prototype = new Talk();</b>
+
+$.extend(Workshop.prototype, {
+  run: function runWorkshop() { … }
+  …
+});
+            </code></pre>
+
+            <ol>
+              <li>Dans la <strong>vraie vie</strong>, le constructeur parent ne peut pas être appelé comme ça ! Il prend des arguments, il fait des trucs…</li>
+              <li>Conceptuellement, instancier le parent juste pour connecter les deux constructeurs, c’est juste <strong>chelou</strong>.</li>
+            </ol>
+          </section>
+
+          <section id="prototypes-core-inheritance-issue">
+            <h2>Le nœud du problème</h2>
+
+            <img src="assets/inheritance-bad.png" class="schema">
+
+            <ol>
+              <li><strong>Il faut</strong> que le prototype du constructeur fils soit une instance d’un truc connecté au prototype parent, mais…</li>
+              <li><strong>…il ne faut pas</strong> instancier le constructeur parent !</li>
+            </ol>
+          </section>
+
+          <section id="prototypes-inheritance-solution">
+            <h2>La solution</h2>
+
+            <p>On crée un <strong>constructeur synthétique</strong> pour l’occasion !</p>
+
+            <pre><code data-noescape data-trim class="javascript">
+function inherit(Child, Parent) {
+  var Synth = function() {};           <u>// constructeur synthétique…</u>
+  synth.prototype = Parent.prototype;  <u>// connecté au bon prototype…</u>
+  Child.prototype = new Synth();       <u>// le proto fils l’instancie…</u>
+  Child.prototype.constructor = Child; <u>// mais on recale constructor</u>
+}
+
+<b class="right">inherit(Workshop, Talk);</b>
+$.extend(Talk.prototype, { … });
+            </code></pre>
+
+            <img src="assets/inheritance-good.png" class="schema">
+          </section>
+
+          <section id="prototypes-inheritance-in-the-wild">
+            <h2>Tout le monde le fait</h2>
+            <h4>Profitez-en</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+// <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/create">ES5</a>
+Workshop.prototype = Object.create(Talk.prototype, {
+  constructor: { value: Workshop }
+});
+
+// ES6
+class Workshop extends Talk
+
+// <a href="http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor">Node.js</a>
+require('util').inherits(Workshop, Talk);
+
+// <a href="https://github.com/ded/klass">Klass.js</a>
+var Workshop = Talk.extend(function Workshop(options) {
+  // …
+}).methods({ … });
+
+// Backbone.js, Ember.js…
+var Workshop = Talk.extend({ … });
+            </code></pre>
+          </section>
+				</section> <!-- #prototypes -->
+
+				<section data-state="theme-color-forest-yellow">
+          <section id="closures">
+            <h1>Closures</h1>
+            <h3>(« fermetures lexicales »)</h3>
+          </section>
+
+          <section id="closures-first-order">
+            <h2>Fonctions de 1er ordre</h2>
+
+            <p><strong>Les fonctions sont des valeurs</strong> comme les autres.</p>
+
+            <pre><code data-trim class="javascript">
+function foo() { … }
+var f = foo;
+var obj = { yo: foo };
+            </code></pre>
+
+            <img src="assets/1st-order.png" class="schema">
+          </section>
+
+          <section id="closures-purpose">
+            <h2>À quoi ça <u>sert ?</u></h2>
+
+            <p>Une <span lang="en">closure</span> équipe une fonction d’un <strong>état privé</strong> qui a le bon goût de <strong>persister</strong> d’un appel à l’autre.</p>
+            <p>On évite de « pourrir le global »</p>
+            <p>On peut faire du <strong>vrai privé</strong> (absolument incontournable)</p>
+          </section>
+
+          <section id="closures-modules">
+            <h2>Les modules</h2>
+            <h4>à la base, sont juste des <span lang="en">closures</span></h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+<u>(function($) {</u>
+  var widgets = {}, wId = 0;
+
+  $(init);
+  $(document).on('ui:update', init);
+
+  function init() {
+    $('*[data-widget]').each(initWidget);
+  }
+
+  function initWidget(__stupid, elt) {
+    elt.id = elt.id || ('__widget' + (++wId));
+    widgets[elt.id] = widgets[elt.id] || new Widget(elt);
+  }
+<u>})(jQuery);</u>
+            </code></pre>
+
+            <p>Tout le contenu de ce module (cette <span lang="en">closure</span>) est <strong>100% privé</strong>.</p>
+            <p>On parle d’<strong>IIFE</strong> (<span lang="en">Immediately Invoked Function Expression</span>).</p>
+          </section>
+
+          <section id="closures-commonjs">
+            <h2>Genre, CommonJS…</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+<span class="implied fragment" data-fragment-index="0">function yourModule(require, module, exports) {</span>
+  var widgets = {};
+  var util = require('util');
+  var Widget = require('widgets/base');
+
+  function CoolWidget(elt) { … }
+  util.inherits(CoolWidget, Widget);
+  // …
+
+  module.exports = Widget;
+<span class="implied fragment" data-fragment-index="0">}</span>
+            </code></pre>
+          </section>
+
+          <section id="closures-amd">
+            <h2>Genre, AMD…</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+<u>define('widgets/cool', ['util', 'widgets/base'], function(util, Widget) {</u>
+  var widgets = {};
+
+  function CoolWidget(elt) { … }
+  util.inherits(CoolWidget, Widget);
+  // …
+
+  return Widget;
+<u>});</u>
+            </code></pre>
+          </section>
+
+          <section id="closures-usefulness">
+            <h2>Au fond, c’est de l’AOP</h2>
+            <h4>(Aspect-Oriented Programming)</h4>
+
+            <p>On peut s’en servir pour <strong>plein de choses</strong>, dont beaucoup formalisées par des <span lang="en">design patterns</span> :</p>
+
+            <ul class="narrow">
+              <li>Décorateur</li>
+              <li>Façade</li>
+              <li>Singleton</li>
+              <li>Mémoïsation</li>
+              <li>ACL</li>
+              <li>Benchmarking</li>
+              <li>Logging</li>
+              <li>Throttling / Debouncing</li>
+              <li>etc.</li>
+            </ul>
+          </section>
+
+          <section id="closures-conditions">
+            <h2>3 conditions</h2>
+
+            <p>Pour qu’une <span lang="en">closure</span> existe, il faut que :</p>
+
+            <ol>
+              <li>une fonction soit <strong>imbriquée</strong> dans une autre ;</li>
+              <li>l’imbriquée utilise au moins une <strong>partie de la portée imbriquante</strong> ;</li>
+              <li>l’imbriquée <strong>échappe à sa portée</strong>.</li>
+            </ol>
+
+            <p>Dans la pratique, le point 3 est avéré dès qu’on <strong>renvoie</strong> la fonction imbriquée, ou qu’on la <strong>passe en paramètre</strong> à un tiers (ex. <span lang="en">callback</span>).</p>
+          </section>
+
+          <section id="closures-example-private">
+            <h2>Exemple : état privé</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+var <u>Talk</u> = (function() {
+  <b class="right">var privStatic = {}; // 100% privé</b>
+
+  function <u>Talk</u>(options) {
+    // …
+  }
+  $.extend(Talk.prototype, {
+    print: function print() { … },
+    run:   function run() { … },
+    toPDF: function toPDF() { … },
+    …
+  });
+
+  return <u>Talk</u>;
+})();
+            </code></pre>
+          </section>
+
+          <section id="closures-example-callcount">
+            <h2>Exemple : call count</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+var sayHi = (function() {
+  <u>var callCount = 0;</u>
+
+  <u>function sayHi</u>() {
+    console.log(++<u>callCount</u>, 'Hiiiiii…');
+  }
+
+  <u>return sayHi</u>;
+})();
+
+sayHi()   // => "1 - Hiiiiii…'
+sayHi()   // => "2 - Hiiiiii…'
+sayHi()   // => "3 - Hiiiiii…'
+callCount // => ReferenceError
+            </code></pre>
+          </section>
+
+          <section id="closures-example-memoization">
+            <h2>Exemple : mémoïsation</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+function memoize(fx) {
+  <u>var called = false, result;</u>
+
+  <u>return function</u> memoized() {
+    if (<u>called</u>) {
+      return <u>result</u>;
+    }
+    result = fx.apply(this, arguments);
+    called = true;
+    return result;
+  };
+}
+
+function demo() { console.log('Yoooo'); return 42; }
+var f = memoize(demo);
+
+f(); // => 42.  Logue 'Yoooo'
+f(); // => 42.  Aucun log.
+f(); // => 42.  Rien à faire :-)
+            </code></pre>
+          </section>
+
+          <section id="closures-example-result">
+            <h2>Exemple : invocateur</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+function get(<u>propName</u>) {
+  <u>return function</u> propGetter(obj) {
+    if ('function' === typeof obj[<u>propName</u>]) {
+      return obj[propName]();
+    }
+    return obj[propName];
+  }
+}
+
+var names = ['Alice', 'Bob', 'Claire', 'David', 'Élodie'];
+var getLength = get('length');
+var lowerCaser = get('toLocaleLowerCase');
+
+names.map(getLength)  // => [5, 3, 6, 5, 6]
+names.map(lowerCaser) // => ['alice', 'bob', 'claire', … 'élodie']
+            </code></pre>
+          </section>
+
+          <section id="closures-example-throttling">
+            <h2>Exemple : throttling</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+function throttle(<u>fx, minInterval</u>) {
+  var <u>latestCall</u>;
+
+  <u>return function</u> throttled() {
+    var now = Date.now();
+    if (now + <u>minInterval</u> &lt; <u>latestCall</u>) {
+      return;
+    }
+    latestCall = now;
+    var result = <u>fx</u>.apply(this, arguments);
+    // Pour un debounce, on mettrait à jour latestCall ici plutôt.
+    return result;
+  }
+}
+
+function hiCoquine() { console.log(Date.now(), 'Hiiii…'); }
+
+setInterval(hiCoquine.throttle(1000), 50);
+// => Seulement un Hiiii toutes les 1000+ ms, pas toutes les 50.
+            </code></pre>
+          </section>
+        </section> <!-- #closures -->
+
+        <section data-state="theme-color-asphalt-orange">
+          <section id="binding">
+            <h1 lang="en">Binding</h1>
+            <h3>(« Où est mon <code>this</code> ?! »)</h3>
+          </section>
+
+          <section id="binding-no-implicit-ownership">
+            <h2>Tu ne me possèdes pas</h2>
+            <h4>Je suis une fonction liiibre !</h4>
+
+            <p>Rappel : qui dit fonctions de premier ordre, dit qu’une fonction <strong>n’appartient pas implicitement</strong> à quelque objet/prototype que ce soit.</p>
+
+            <pre><code data-trim class="javascript">
+function foo() { … }
+var f = foo;
+var obj = { yo: foo };
+            </code></pre>
+
+            <img src="assets/1st-order-2.png" class="schema">
+          </section>
+
+          <section id="binding-ref-copy-case">
+            <h2>Méfiez-vous des copies</h2>
+            <h4>Surtout celles de références</h4>
+
+            <pre><code data-trim class="javascript">
+var obj1 = {
+  run: function run() { … }
+};
+
+var obj2 = {
+  run: obj1.run
+};
+            </code></pre>
+
+            <p>À qui appartient la fonction maintenant ? <code>obj1</code> ou <code>obj2</code> ?</p>
+            <p class="fragment">(Réponse : à personne, on vient de vous le dire…)</p>
+          </section>
+
+          <section id="binding-singleton-methods">
+            <h2>Méthodes singletons</h2>
+
+            <p>Tout objet peut avoir une <strong>méthode qui lui est propre</strong>, sur l’instance elle-même, sans exister sur un prototype…</p>
+            <p>C’est ce qui se passe dès que vous filez un <span lang="en">callback</span> dans un hash d’options, par exemple :</p>
+
+            <pre><code data-noescape data-trim class="javascript">
+$.ajax('/api/v1/ohai', <u>{</u>
+  type: 'GET',
+  dataType: 'json',
+  <u>success: function ohaiSucceeded(res) { … }</u>
+<u>}</u>)
+            </code></pre>
+          </section>
+
+          <section id="binding-implicit">
+            <h2>L’exception</h2>
+            <h4>qui confirme la règle…</h4>
+
+            <p>Il y a <strong>un seul cas de binding implicite</strong> :</p>
+            <h4 class="fragment">sujet + verbe + complément</h4>
+            <p class="fragment">(Objet + indexation + appel immédiat)</p>
+
+            <pre class="fragment"><code data-noescape data-trim class="javascript">
+var abrasiveGuy = {
+  name: 'Linus',
+  review: function review() {
+    console.log("I am " + this.name + " and I say your code is shit!");
+  }
+};
+
+<b class="right fragment">abrasiveGuy.review();</b>
+<b class="right fragment">abrasiveGuy['review']();</b>
+            </code></pre>
+          </section>
+
+          <section id="binding-default">
+            <h2>Binding par défaut</h2>
+            <h4>Dans tous les autres cas</h4>
+
+            <p>Tout le reste = <strong>on référence la fonction sans l’appeler</strong>.</p>
+            <p class="fragment">Mode laxiste : <code>this</code> par défaut (<code>window</code> ou <code>global</code>).</p>
+            <p class="fragment">Mode strict : <code>this</code> est <code>undefined</code>.</p>
+
+            <pre class="fragment"><code data-noescape data-trim class="javascript">
+var name = 'a troll';
+var harshReview = <u>abrasiveGuy.review</u>;
+harshReview() // => "I am a troll and I say your code is shit!"
+
+<span class="fragment">setTimeout(<u>abrasiveGuy.review</u>, 0);
+// => "I am a troll and I say your code is shit!"</span>
+
+<span class="fragment">$(document).on('click', <u>abrasiveGuy.review</u>);
+// => "I am undefined and I say your code is shit!"</span>
+
+<span class="fragment">// Si la fonction review avait été définie en mode strict :
+// => Uncaught TypeError: Cannot read property 'name' of undefined</span>
+            </code></pre>
+          </section>
+
+          <section id="binding-specify">
+            <h2>Spécifier le binding</h2>
+            <h4>Sinon on serait dans la m…ouise</h4>
+
+            <p>Si JS est cohérent, l’absence de <span lang="en">binding</span> implicite exige qu’il fournisse <strong>de quoi être explicite</strong>, donc un moyen programmatique de <strong>spécifier <strong>this</strong></strong>.</p>
+
+            <p class="fragment" data-fragment-index="0"><strong>JS est cohérent :-)</strong></p>
+
+            <p class="fragment" data-fragment-index="1">Les fonctions, qui sont des objets (elles sont des instances de <code>Function</code>), ont deux méthodes* : <code>apply</code> et <code>call</code>, qui servent à ça.</p>
+
+            <footer class="fragment" data-fragment-index="1">* Oui, les fonctions ont des méthodes.  Respire, ça va passer.</footer>
+          </section>
+
+          <section id="binding-call">
+            <h2>Call me maybe</h2>
+
+            <p><code>call</code> : quand tu connais la sémantique des arguments.</p>
+            <p>On l’a utilisé tout à l’heure pour appeler les versions héritées des méthodes et constructeurs, tu te rappelles ?</p>
+
+            <p class="breathing"><code>theFunction.call(thisObj</code> [<code>, arg1</code> [<code>, arg2</code>…]]<code>)</code></p>
+
+            <pre><code data-noescape data-trim class="javascript">
+var cryptoArray = { 0: 'JS', 1: 'ça', 2: 'torche', length: 3, x: 42 };
+
+Array.prototype.join<u>.call(cryptoArray</u>, ' ') // => 'JS ça torche'
+            </code></pre>
+
+            <p class="breathing">Les arguments sont passés à la volée, il faut donc en connaître le <strong>nombre</strong> et le <strong>sens</strong>.</p>
+
+            <p><code>fx.call(obj, 1, 2)</code> ⇔ <code>obj.fx(1, 2)</code></p>
+          </section>
+
+          <section id="binding-apply">
+            <h2>apply</h2>
+
+            <p>Quand tu ne connais pas à l’avance la sémantique des arguments.  Donc pour du <strong>code générique</strong>, genre AOP.</p>
+
+            <p class="breathing"><code>theFunction.apply(thisObj, [arg1</code>…<code>]])</code></p>
+
+            <pre><code data-noescape data-trim class="javascript">
+function genMethodCall(name) {
+  var args = Array.prototype.slice<u>.call</u>(arguments, <u>1</u>);
+
+  return function methodCall(obj) {
+    return obj[name]<u>.apply</u>(obj, <u>args</u>);
+  };
+}
+
+var stripSides = genMethodCall('slice', 1, -1);
+
+['&lt;strong>', '&lt;em>', '&lt;code>'].map(stripSides)
+// => ['strong', 'em', 'code']
+            </code></pre>
+
+            <p><code>fx.apply(obj, [1, 2])</code> ⇔ <code>obj.fx(1, 2)</code></p>
+          </section>
+
+          <section id="binding-binding-bother">
+            <h2>La vigilance constante</h2>
+            <h4>j’ai comme un doute</h4>
+
+            <p>Si on doit penser à faire le <code>call</code> ou le <code>apply</code> à chaque fois, on peut toujours se brosser…</p>
+            <p class="breathing">Sans compter que dans bien des cas on n’aura pas la référence de l’objet approprié, juste la référence de la fonction à appeler <span lang="la">in fine</span>.</p>
+            <p><strong>Du coup que faire ?</strong></p>
+          </section>
+
+          <section id="binding-seal-binding">
+            <h2>Binding persistant ?</h2>
+            <h4>En voilà une idée qu’elle est bonne</h4>
+
+            <p>C’est un peu le boss de fin de niveau : on reprend plein de concepts déjà vus, on mélange, et hop !</p>
+
+            <ol>
+              <li>On prend la méthode d’origine (par exemple, sur le prototype, ou une méthode singleton sur l’instance)</li>
+              <li>On la <strong>remplace sur l’instance</strong> par un <strong>enrobage</strong> qui se souviendra <strong>le moment venu</strong> qu’il faut <strong>assurer le <span lang="en">binding</span></strong>.</li>
+            </ol>
+
+            <p>OK, et donc côté code, ça donne quoi ?</p>
+          </section>
+
+          <section id="binding-bind">
+            <h2>bind</h2>
+
+            <pre><code data-noescape data-trim class="javascript">
+<u>Function.prototype.bind</u> = function bind(context) {
+  var fx = <u>this</u>;
+
+  return function boundFx() {
+    return fx<u>.apply</u>(context, arguments);
+  };
+};
+
+var harshReview = abrasiveGuy.review<u>.bind(abrasiveGuy)</u>;
+setTimeout(harshReview, 0) // => 'I am <u>Linus</u> and I say your code…'
+            </code></pre>
+
+            <footer>(on ne s’occupe ici que du côté <span lang="en">binding</span> pur, la plupart des implémentations existantes permettent aussi l’application partielle)</footer>
+          </section>
+
+          <section id="binding-bind-demo">
+            <h2>Bind classique</h2>
+            <h4>Du prototype vers l’instance</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+function Widget(elt) {
+  this.$elt = $(elt);
+  this.$elt.on('click', this.handleClick<u>.bind(this)</u>);
+  …
+}
+
+$.extend(Widget<u>.prototype</u>, {
+  <u>handleClick</u>: function handleClick(e) { … },
+  …
+});
+            </code></pre>
+
+            <img src="assets/binding.png" class="schema">
+          </section>
+
+          <section id="binding-in-the-wild">
+            <h2>Tout le monde le fait</h2>
+            <h4>Puisqu’on vous dit d’en profiter !</h4>
+
+            <pre><code data-noescape data-trim class="javascript">
+// ES5, Prototype.js, Ext
+this.review = this.review.<u>bind</u>(this);
+
+// Underscore.js
+this.review = _.<u>bind</u>(this.review, this);
+_.<u>bindAll</u>(this, 'review'); // pour plein d’un coup…
+
+// jQuery
+this.review = $.<u>proxy</u>(this.review, this);
+
+// YUI
+this.review = Y.<u>bind</u>(this.review, this);
+
+// Dojo
+this.review = dojo.<u>hitch</u>(this, 'review'); // module lang si > 1.7
+
+// ES6
+review: <u>=></u> console.log(`I am ${this.name} and I say your code is …!`)
+            </code></pre>
+          </section>
+
+				</section>
+
+				<section id="trainings" data-state="theme-color-mint-beige">
+					<h2>Envie d’en savoir plus ?</h2>
+
+          <p>
+            On fait des <strong>super formations de ouf</strong> sur<br/>
+            <a href="">Git</a>,
+            <a href="">JavaScript et le dev web front</a> et
+            <a href="">Node.js</a>.
+          </p>
+
+          <br>
+
+          <p>Et ce qui est <strong>encore plus cool</strong>, c’est que pour l’auditoire Paris Web, c’est <strong>&minus;15%</strong> jusqu’à fin janvier :</p>
+
+          <p><a href="http://bit.ly/pw14love">bit.ly/pw14love</a></p>
+          <p><img src="sponsor-di-qrcode.png" id="qrcode"/></p>
+				</section>
+<!--
+				<section data-state="theme-color-silver-green">
+					<h2>silver-green</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta rem, similique optio nam recusandae, magni consequatur id omnis dolorum, reprehenderit repellat distinctio quisquam cumque accusantium atque vel animi neque porro.</p>
+				</section>
+-->
+				<section>
+					<h1>Merci !</h1>
+          <h3>Et que JS soit avec vous</h3>
+          <br>
+					<p>Christophe Porteneuve</p>
+          <p><a href="https://twitter.com/porteneuve">@porteneuve</a></p>
+
+          <p class="breathing">Retrouvez les slides sur <a href="http://bit.ly/jsyoulove">bit.ly/jsyoulove</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+        width: 980,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
