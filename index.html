@@ -87,71 +87,449 @@ var christophe = {
           <h2>En 3 heures</h2>
           <h3>On y croit !</h3>
 
-          <p>FIXME</p>
+          <p>Découvrir ce qu’est Node et d’où ça vient</p>
+          <p>Tester la température de l’eau avec un petit programme</p>
+          <p>Faire un <strong>vrai serveur web bien démonstratif</strong></p>
+          <p>Aller plus loin…</p>
+        </section>
+
+        <section id="history">
+          <h2>Historique de Node</h2>
+          <h4>En 30 secondes mais <a href="http://www.angryalien.com/">sans lapins</a></h4>
+
+          <ul>
+            <li>2009 : Sortie officielle (0.2)</li>
+            <li>2010 : Express ; Nodejitsu</li>
+            <li>2011 : npm ; Azure</li>
+            <li>2013 : Déferlante de <span lang="en">success stories</span> : PayPal, Walmart, LinkedIn, eBay, Yahoo!, Groupon, Medium, Uber…<br/>Dans la Valley, Rails est devenu le choix « conservateur » et Node.js le choix « start-up moderne ».</li>
+            <li class="fragment"><strong>2014 : La France l’ignore toujours superbement</strong></li>
+          </ul>
         </section>
 
 				<section data-state="theme-color-blue-yellow">
-					<section id="prototypes">
-						<h1>Prototypes</h1>
+					<section id="installs">
+						<h1>Install!</h1>
+            <h2>Ça va bien se passer</h2>
 					</section>
 
-          <section id="prototypes-not-just-classical-oop">
-            <h2>Z'êtes trop classiques</h2>
+          <section id="install-node">
+            <h2>Node.js</h2>
 
-            <p>JS est bien plus orienté objet que Java, C++, Python…</p>
-            <p>POO = <strong>« classique »</strong> (basique) + <strong>prototypale</strong></p>
-            <p>La 2nde est un sur-ensemble de la 1ère.</p>
-            <p>Simplement parce qu'on n’a pas <code>class</code>, <code>extends</code> et <code>super</code> ne veut pas dire qu’on n’est pas objet… (cf. ES6 / CoffeeScript)</p>
+            <table class="pw-table">
+              <thead>
+                <tr>
+                  <th>OSX</th>
+                  <th>Debian/Ubuntu</th>
+                  <th>Windows</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <ul>
+                      <li>Homebrew</li>
+                      <li><a href="https://github.com/creationix/nvm">nvm</a></li>
+                      <li><a href="http://nodejs.org/download/">Installeur officiel</a></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li><a href="http://www.ubuntuupdates.org/ppa/chris_lea_nodejs">La PPA qui va bien</a></li>
+                      <li><a href="https://github.com/creationix/nvm">nvm</a></li>
+                      <li>Les paquets legacy <code>nodejs</code> et <code>npm</code> :-(</li>
+                      <li><a href="http://nodejs.org/download/">Le build depuis le source</a> (on n’a pas le temps, là…)</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li><a href="http://nodejs.org/download/">Installeur officiel</a></li>
+                      <li><a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a></li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </section>
-				</section> <!-- #prototypes -->
+
+          <section id="install-git">
+            <h2>Git</h2>
+
+            <table class="pw-table">
+              <thead>
+                <tr>
+                  <th>OSX</th>
+                  <th>Debian/Ubuntu</th>
+                  <th>Windows</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <ul>
+                      <li>Celui du système…</li>
+                      <li>Homebrew</li>
+                      <li><a href="http://git-scm.com/download/mac">Installeur officiel</a></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li><a href="http://git-scm.com/download/linux">Celui du système</a>…</li>
+                      <li><a href="https://launchpad.net/~git-core/+archive/ubuntu/ppa">Le PPA qui va bien</a></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li><a href="http://nodejs.org/download/">L’installeur officiel</a></li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="install-mongodb">
+            <h2>mongoDB</h2>
+
+            <table class="pw-table">
+              <thead>
+                <tr>
+                  <th>OSX</th>
+                  <th>Debian/Ubuntu</th>
+                  <th>Windows</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <ul>
+                      <li>Homebrew</li>
+                      <li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">Manuellement</a> :-(</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li>
+                        Paquets officiels sur dépôt dédié :
+                        <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/">Ubuntu</a>,
+                        <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/">Debian</a>,
+                        <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-red-hat-centos-or-fedora-linux/">RHEL/CentOS/Fedora</a>
+                      </li>
+                      <li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-linux/">Manuellement</a> :-(</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/">L’installeur officiel</a></li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="install-workshop">
+            <h2>L’atelier</h2>
+
+            <p>Par Git :</p>
+            <pre><code class="bash">$ git clone https://github.com/tdd/atelier-node-pw2014.git</code></pre>
+
+            <p>Ou en <a href="https://github.com/tdd/atelier-node-pw2014/releases">téléchargeant l’archive</a></p>
+          </section>
+				</section> <!-- #installs -->
 
 				<section data-state="theme-color-forest-yellow">
-          <section id="closures">
-            <h1>Closures</h1>
-            <h3>(« fermetures lexicales »)</h3>
+          <section id="hello-world">
+            <h1>Hello Node</h1>
+            <h3>Soulever le voile</h3>
           </section>
 
-          <section id="closures-first-order">
-            <h2>Fonctions de 1er ordre</h2>
-
-            <p><strong>Les fonctions sont des valeurs</strong> comme les autres.</p>
+          <section id="hello-basic">
+            <h2>Mon premier programme Node</h2>
 
             <pre><code data-trim class="javascript">
-function foo() { … }
-var f = foo;
-var obj = { yo: foo };
+var os = require('os');
+
+console.log("Salut tout le monde !");
+console.log("Cette machine a", os.cpus().length, "processeurs et",
+  os.totalmem() / (1024*1024*1024), "Go de RAM");
+            </code></pre>
+
+            <pre><code data-trim class="bash">
+$ node hello.js
+Salut tout le monde !
+Cette machine a 4 processeurs et 8 Go de RAM
+</code></pre>
+          </section>
+
+          <section id="hello-npm">
+            <h2>npm</h2>
+
+            <p>Le référentiel de modules</p>
+
+            <p>210 nouveaux modules par jour ! (~100 000, là…)</p>
+
+            <p>Omniprésent pour vos outils : Grunt, Gulp, Broccoli, Brunch, Angular, Ember, PhantomJS, CasperJS, Weinre, Cordova/Phonegap, Mocha…</p>
+
+            <pre><code class="bash">$ npm install --save moment</code></pre>
+          </section>
+
+          <section id="hello-moment">
+            <h2>1er module tiers</h2>
+            <h4>Moment.js c’est le bien</h4>
+
+            <pre><code data-trim data-noescape class="javascript">
+var os = require('os');
+<u>var moment = require('moment');
+moment.locale('fr');</u>
+
+<u>var now = moment();</u>
+console.log("Salut tout le monde !");
+<u>console.log("On est", now.format('dddd D MMMM YYYY à HH[h]mm'));</u>
+console.log("Cette machine a", os.cpus().length, "processeurs et",
+  os.totalmem() / (1024*1024*1024), "Go de RAM");
+            </code></pre>
+
+            <pre><code data-trim class="bash">
+$ node hello.js
+Salut tout le monde !
+On est samedi 18 octobre 2014 à 14h58
+Cette machine a 4 processeurs et 8 Go de RAM
             </code></pre>
           </section>
-        </section> <!-- #closures -->
+        </section> <!-- #hello-world -->
 
         <section data-state="theme-color-asphalt-orange">
-          <section id="binding">
-            <h1 lang="en">Binding</h1>
-            <h3>(« Où est mon <code>this</code> ?! »)</h3>
+          <section id="server">
+            <h1>Un vrai serveur</h1>
+            <h3>En voiture Simone !</h3>
           </section>
 
-          <section id="binding-no-implicit-ownership">
-            <h2>Tu ne me possèdes pas</h2>
-            <h4>Je suis une fonction liiibre !</h4>
+          <section id="express">
+            <h2>Express</h2>
+            <h4>Le principal framework web de base</h4>
 
-            <p>Rappel : qui dit fonctions de premier ordre, dit qu’une fonction <strong>n’appartient pas implicitement</strong> à quelque objet/prototype que ce soit.</p>
+            <p>C’est une surcouche du module <code>connect</code> qui gère les piles de <span lang="en">middlewares</span>, lui-même construit par-dessus le module natif <code>http</code> de Node.</p>
+            <p>Système d’applis modulaires, routage par méthode et chemin, système de vues et moteurs de templates.</p>
 
-            <pre><code data-trim class="javascript">
-function foo() { … }
-var f = foo;
-var obj = { yo: foo };
-            </code></pre>
+            <footer>On va aussi utiliser <code>colors</code> pour formater un peu nos affichages en console…</footer>
+          </section>
+
+          <section id="logging">
+            <h2>Logging</h2>
+            <h4>Avec morgan</h4>
+
+            <p>Histoire d’avoir des logs HTTP basiques pour bien voir nos requêtes, on va rajouter un <span lang="en">middleware</span> « natif » (quand même un module à part) : <code>morgan</code>.</p>
+
+            <p>Propose plusieurs formats pré-définis, souvent inspirés d’Apache, et bien sûr on peut définir nos propres formats.</p>
+
+            <footer>C’est aussi l’occasion de découvrir <code>app.get(…)</code> et le réglage <code>'env'</code> d’Express.</footer>
+          </section>
+
+          <section id="templating">
+            <h2>Templating</h2>
+            <h4>Avec Jade</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="nodemon">
+            <h2>Recharger</h2>
+            <h4>le code avec nodemon</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="scripts">
+            <h2>Scripts</h2>
+            <h4>du <code>package.json</code></h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="node-inspector">
+            <h2>Débogueur</h2>
+            <h4>Avec node-inspector</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="session">
+            <h2>Session signée en cookie</h2>
+            <h4>Avec cookie-session</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="comment-ui">
+            <h2>Les commentaires</h2>
+            <h4>Construire l’UI</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="csurf">
+            <h2>Protection CSRF</h2>
+            <h4>Avec csurf</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="flashes-redirs">
+            <h2>Workflow</h2>
+            <h4>à coup de flashes et de redirections</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="mongodb">
+            <h2>mongoDB</h2>
+            <h4>La techno qui t’aime</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="mongoose">
+            <h2>Mongoose</h2>
+            <h4>Le meilleur moyen de faire du mongoDB</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="connection">
+            <h2>Connexion</h2>
+            <h4>à mongoDB</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="comment-model">
+            <h2>Modèle mongoDB</h2>
+            <h4>pour nos commentaires</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="helpers">
+            <h2>Helpers</h2>
+            <h4>pour nos vues</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="passport">
+            <h2>Authentification</h2>
+            <h4>Avec Passport</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="user-model">
+            <h2>Un modèle User</h2>
+            <h4>pour nos identités</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="auth-workflow">
+            <h2>Notre workflow</h2>
+            <h4>d’authentification</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="passport-local">
+            <h2>Stratégie locale</h2>
+            <h4>d’authentification</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="authors">
+            <h2>Des auteurs</h2>
+            <h4>pour nos commentaires</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="passport-facebook">
+            <h2>OAuth Facebook</h2>
+            <h4>pour l’authentification</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="passport-twitter">
+            <h2>OAuth Facebook</h2>
+            <h4>pour l’authentification</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
+          </section>
+
+          <section id="websockets">
+            <h2>Temps réel</h2>
+            <h4>Avec socket.io</h4>
+
+            <p>FIXME</p>
+
+            <footer>FIXME</footer>
           </section>
 				</section>
+
+        <section id="learn-more" data-state="theme-color-mint-beige">
+          <h2>Plus loin avec Node</h2>
+
+          <p>
+            FIXME: nodejs.org, docs.npmjs.com, awesome node, nodeschool.io, CodeSchool, etc.
+          </p>
+        </section>
 
 				<section id="trainings" data-state="theme-color-mint-beige">
 					<h2>Envie d’en savoir plus ?</h2>
 
           <p>
             On fait des <strong>super formations de ouf</strong> sur<br/>
-            <a href="">Git</a>,
-            <a href="">JavaScript et le dev web front</a> et
-            <a href="">Node.js</a>.
+            <a href="http://www.git-attitude.fr/git-total/">Git</a>,
+            <a href="http://www.js-attitude.fr/js-total/">JavaScript et le dev web front</a> et
+            <a href="http://www.js-attitude.fr/node-js/">Node.js</a>.
           </p>
 
           <br>
@@ -174,7 +552,7 @@ var obj = { yo: foo };
 					<p>Christophe Porteneuve</p>
           <p><a href="https://twitter.com/porteneuve">@porteneuve</a></p>
 
-          <p class="breathing">Retrouvez les slides sur <a href="http://bit.ly/node-pw14">bit.ly/node-pw14</a></p>
+          <p class="breathing">Retrouvez les slides sur <a href="http://bit.ly/nodeyoulove">bit.ly/nodeyoulove</a></p>
 				</section>
 			</div>
 		</div>

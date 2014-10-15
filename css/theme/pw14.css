@@ -673,3 +673,9 @@ b.right::after {
   border: none;
   border-radius: 1em;
 }
+
+table.pw-table { border-collapse: collapse; }
+table.pw-table thead th { border-bottom: 0.1em solid white; text-align: center; }
+table.pw-table tbody td:not(:last-child) { border-right: 0.05em solid rgba(255, 255, 255, 0.3); }
+table.pw-table tbody td { vertical-align: top; }
+table.pw-table ul { margin-left: 1.5em; }
