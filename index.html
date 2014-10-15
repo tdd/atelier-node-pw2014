@@ -502,45 +502,54 @@ connecting to: test
             <h2>Stratégie locale</h2>
             <h4>d’authentification</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>C’est à nous de dire oui ou non…</p>
+            <p>On va se faire un truc pipeau : tout login est valide si le mot de passe est « foobar »</p>
+            <p>Tout utilisateur est créé à la volée la première fois (juste pour notre atelier, hein…).</p>
           </section>
 
           <section id="authors">
             <h2>Des auteurs</h2>
             <h4>pour nos commentaires</h4>
 
-            <p>FIXME</p>
+            <p>Puisqu’on a maintenant un utilisateur actif, autant en faire formellement l’auteur du commentaire lors de la création !</p>
+            <p>Ça introduit le concept de <strong>relation</strong>, qui sera ici <strong>dénormalisée</strong>.</p>
 
-            <footer>FIXME</footer>
+            <footer>On en profitera pour voir la fonctionnalité <code>populate</code> de Mongoose…</footer>
           </section>
 
           <section id="passport-facebook">
             <h2>OAuth Facebook</h2>
             <h4>pour l’authentification</h4>
 
-            <p>FIXME</p>
+            <p>À présent que l’infra est en place, ajouter une stratégie est un jeu d’enfant ! Il nous faut :</p>
 
-            <footer>FIXME</footer>
+            <ol>
+              <li>Configurer et enregistrer la stratégie associée (ici on passe par le module <code>passport-facebook</code>)</li>
+              <li>Une proposition dans <code>/get-in</code></li>
+              <li>Des URLs dédiées (ici OAuth : une URL de demande, une de callback)</li>
+            </ol>
           </section>
 
           <section id="passport-twitter">
             <h2>OAuth Facebook</h2>
             <h4>pour l’authentification</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>Quand on a déjà de l’OAuth, en rajouter est super simple !</p>
+            <p>Il suffit de décliner ce qu’on a fait pour Facebook.</p>
+            <p>C’est principalement la configuration qui change.</p>
+            <p>On utilisera <code>passport-twitter</code>.</p>
           </section>
 
           <section id="websockets">
             <h2>Temps réel</h2>
             <h4>Avec socket.io</h4>
 
-            <p>FIXME</p>
+            <p>Web Sockets = canal binaire bidirectionnel temps réel, entre le serveur et ses clients.</p>
+            <p>Pas toujours pertinent, il faut vraiment avoir besoin de <em>bidirectionnel</em> et de <em>temps réel</em>, sinon des moyens plus classiques suffisent.</p>
+            <p>Trivial en Node grâce à <a href="http://socket.io/">Socket.IO</a>.</p>
+            <p>Fournit une gestion de <span lang="en">fallbacks</span> et une grosse surcouche fonctionnelle (événements, canaux, etc.)</p>
 
-            <footer>FIXME</footer>
+            <footer>On utilisera <code>serve-static</code> pour servir automatiquement nos fichiers JS.</footer>
           </section>
 				</section>
 
