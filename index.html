@@ -328,144 +328,174 @@ Cette machine a 4 processeurs et 8 Go de RAM
             <h2>Templating</h2>
             <h4>Avec Jade</h4>
 
-            <p>FIXME</p>
+            <p>Langage de templating à indentation significative</p>
+            <p>Un peu comme HAML et Slim</p>
+            <p>Mécanisme d'extensions et de blocs, plus balèze qu'une simple inclusion dans un layout</p>
+            <p>Il faut indiquer à Express un moteur par défaut</p>
 
-            <footer>FIXME</footer>
+            <footer>(et par défaut, Express lit ses vues dans <code>views/</code>…)</footer>
           </section>
 
           <section id="nodemon">
             <h2>Recharger</h2>
             <h4>le code avec nodemon</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>Ctrl+C / Flèche haute / Entrée, ça va bien 5 minutes…</p>
+            <p>Nodemon permet de relancer une commande dès que la surveillance de fichiers détecte un changement</p>
+            <p>Pas que Node, en fait.  Très puissant et configurable.</p>
           </section>
 
           <section id="scripts">
             <h2>Scripts</h2>
             <h4>du <code>package.json</code></h4>
 
-            <p>FIXME</p>
+            <p>On peut configurer des actions dans <code>package.json</code></p>
+            <p>Certaines sont déjà reconnues : <code>start</code>, <code>test</code>, etc.</p>
+            <p>On fait alors juste <code>npm start</code>, par exemple.</p>
+            <p>Pour les autres, <code>npm run le-nom</code></p>
 
-            <footer>FIXME</footer>
+            <footer>Ça inclue automatiquement <code>./node_modules/.bin</code> dans le <code>PATH</code></footer>
           </section>
 
           <section id="node-inspector">
-            <h2>Débogueur</h2>
+            <h2>Déboguer</h2>
             <h4>Avec node-inspector</h4>
 
-            <p>FIXME</p>
+            <p><code>console.log</code> aussi, ça va bien 5 minutes pour déboguer…</p>
+            <p>Et si on utilisait plutôt les DevTools de Chrome ?</p>
+            <p>C’est possible grâce à <code>node-inspector</code></p>
 
-            <footer>FIXME</footer>
+            <footer>Pensez à lancer votre node / nodemon avec <code>--debug</code></footer>
           </section>
 
           <section id="session">
-            <h2>Session signée en cookie</h2>
-            <h4>Avec cookie-session</h4>
+            <h2>Sessions signées</h2>
+            <h4>Dans les cookies, avec cookie-session</h4>
 
-            <p>FIXME</p>
+            <p>Sur ce coup, on va laisser la session en cookie</p>
+            <p>(ça nous évite d’avoir à la persister côté serveur…)</p>
+            <p>Mais on va la sécuriser un minimum, en la <strong>signant</strong>.</p>
+            <p>Le module <code>cookie-session</code>, dérivé de <code>keygrip</code>, est parfait pour ça</p>
 
-            <footer>FIXME</footer>
+            <footer>(pour une persistance serveur, <code>express-session</code> et <code>connect-redis</code> marchent bien…)</footer>
           </section>
 
           <section id="comment-ui">
             <h2>Les commentaires</h2>
             <h4>Construire l’UI</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>On va permettre la saisie de commentaires / textes libres, qu’on authentifiera à terme.</p>
+            <p>Évidemment, il faut donc persister ça « en base »</p>
+            <p>On utilisera à terme mongoDB, mais pour le moment, posons déjà le contrôleur et les vues…</p>
           </section>
 
           <section id="csurf">
             <h2>Protection CSRF</h2>
             <h4>Avec csurf</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>Afin d’éviter tout risque de <a href="https://fr.wikipedia.org/wiki/Cross-Site_Request_Forgery">CSRF</a>, protégeons-nous avec le module <code>csurf</code></p>
+            <p>Il faut du coup bien penser à inclure le token approprié dans tout formulaire qui ne fasse pas juste du GET.</p>
           </section>
 
           <section id="flashes-redirs">
             <h2>Workflow</h2>
             <h4>à coup de flashes et de redirections</h4>
 
-            <p>FIXME</p>
+            <p>Avant de persister à proprement parler, on peut déjà caler l'UX et les navigations.</p>
+            <p>Un commentaire valide (non vide) donnerait un message de confirmation suite à une redirection sur la liste.</p>
+            <p>Un commentaire vide afficherait directement le formulaire, et un message de refus.</p>
+            <p>Ces messages sont temporaires : on parle de <strong>flashes</strong></p>
+            <p>Voyons comment utiliser <code>connect-flash</code>.</p>
 
-            <footer>FIXME</footer>
+            <footer>Rien à voir avec Adobe Flash, évidemment…</footer>
           </section>
 
           <section id="mongodb">
             <h2>mongoDB</h2>
             <h4>La techno qui t’aime</h4>
 
-            <p>FIXME</p>
+            <p>Une des principales bases « NoSQL ».</p>
+            <p>Extrêmement puissante et performante.</p>
+            <p>Comme pour plusieurs autres, son langage naturel est JS !</p>
+            <p>Commençons par voir en CLI notre mongoDB et sa manip…</p>
 
-            <footer>FIXME</footer>
+            <pre><code data-trim class="bash">
+$ mongo
+MongoDB shell version: 2.6.3
+connecting to: test
+>
+</code></pre>
           </section>
 
           <section id="mongoose">
             <h2>Mongoose</h2>
             <h4>Le meilleur moyen de faire du mongoDB</h4>
 
-            <p>FIXME</p>
+            <p>Un enrobage très sympa autour de l'API nue de mongoDB.</p>
+            <p>Fournit des schémas (et donc de la validation, des accesseurs et attributs virtuels, des valeurs par défaut, etc.)</p>
 
-            <footer>FIXME</footer>
+            <p><a href="http://mongoosejs.com/">mongoosejs.com</a></p>
           </section>
 
           <section id="connection">
             <h2>Connexion</h2>
             <h4>à mongoDB</h4>
 
-            <p>FIXME</p>
+            <p>On va se coller une connexion singleton avec un <span lang="en">callback</span> de mise à disposition, et ajouter ça à notre démarrage serveur.</p>
 
-            <footer>FIXME</footer>
+            <footer>Tant que la connexion n’est pas disponible, toutes les opérations sur les modèles resteront en suspens…</footer>
           </section>
 
           <section id="comment-model">
             <h2>Modèle mongoDB</h2>
             <h4>pour nos commentaires</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>Définissions un schéma pour <code>Comment</code>.</p>
+            <p>Voyons l’API de requête, notamment en mode <strong>promesse</strong>.</p>
+            <p>Faisons une vraie persistance et contrôlons dans la CLI !</p>
+            <p>Ajoutons une méthode statique de listing…</p>
+            <p>…et on finit en faisant un vrai listing…</p>
           </section>
 
           <section id="helpers">
             <h2>Helpers</h2>
             <h4>pour nos vues</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <p>C’est le moment d’augmenter l’infra de <span lang="en">helpers</span> qu’on avait faite pour les flashes, en injectant des helpers libres dans nos vues.</p>
+            <p>Ici, un formateur d’horodatage pour nos commentaires.</p>
+            <p>Pour se caler automatiquement sur la langue préférée définie dans le navigateur, on va s’aider d’<a href="http://underscorejs.org/">underscore</a>.</p>
           </section>
 
           <section id="passport">
             <h2>Authentification</h2>
             <h4>Avec Passport</h4>
 
-            <p>FIXME</p>
+            <p>Le module dominant pour la gestion générique de l’authentification en Node.</p>
+            <p>Fournit un <span lang="en">middleware</span> d’extension de requête avec une propriété <code>user</code>, un mécanisme de (dé)sérialisation dans la session, et des stratégies à brancher suivant les modes d’authentification retenus.</p>
 
-            <footer>FIXME</footer>
+            <p><a href="http://passportjs.org/">passportjs.org</a></p>
           </section>
 
           <section id="user-model">
             <h2>Un modèle User</h2>
             <h4>pour nos identités</h4>
 
-            <p>FIXME</p>
+            <p>Il nous faut impérativement des objets qui représentent nos utilisateurs, pour Passport.  Comme on veut se souvenir de leur première connexion (si on veut des stats, toussa…), on va les persister.</p>
 
-            <footer>FIXME</footer>
+            <p>Donc hop, un modèle Mongoose !</p>
           </section>
 
           <section id="auth-workflow">
             <h2>Notre workflow</h2>
             <h4>d’authentification</h4>
 
-            <p>FIXME</p>
-
-            <footer>FIXME</footer>
+            <ul>
+              <li>Toute URL démarrant par <code>/comments</code> nécessite une authentification : on va la requérir nous-mêmes.</li>
+              <li>Sur <code>/get-in</code>, on aura une liste d’identifications possibles</li>
+              <li>Sur <code>/get-in/xxx</code>, on aura les accès d’une stratégie xxx</li>
+              <li>Sur <code>/logout</code>, on se déconnecte</li>
+              <li>La barre supérieure des pages soit permettra de se connecter, soit rappellera l’utilisateur actif et permettra de se déconnecter.</li>
+            </ul>
           </section>
 
           <section id="passport-local">
