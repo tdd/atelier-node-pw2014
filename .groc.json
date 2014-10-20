@@ -1,0 +1,11 @@
+{
+  "glob": [
+    "controllers/**/*.js",
+    "helpers/**/*.js",
+    "models/**/*.js",
+    "server.js",
+    "package.json"
+  ],
+  "github": false,
+  "strip": "--no-strip"
+}
