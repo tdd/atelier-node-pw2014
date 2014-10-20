@@ -1,22 +1,18 @@
-<!DOCTYPE html><html lang="en"><head><title>public/node-demo</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="public/node-demo"><meta name="groc-project-path" content="public/node-demo.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">public/node-demo.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>global $, io </p></div></div><div class="code"><div class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-<span class="hljs-pi">  'use strict'</span>;
+<!DOCTYPE html><html lang="en"><head><title>public/node-demo</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="public/node-demo"><meta name="groc-project-path" content="public/node-demo.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">public/node-demo.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="client-web-sockets">Client Web Sockets</h1></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Ce micro-module est chargé d&#39;office sur les pages de l&#39;appli,
+et le cas échéant écoutera les notifs Web Sockets du serveur
+pour injecter en temps réel les commentaires d&#39;autres utilisateurs.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Vous pouvez facilement tester ça en ouvrant deux navigateurs sur
+l&#39;appli, ou en ouvrant une session de navigation privée dans le même
+navigateur (deux sessions distinctes au final, donc ça roule).  En fait
+même deux fenêtres dans la même session marcheraient, mais utiliser deux
+comptes utilisateurs séparés c&#39;est plus marrant :-)</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>global $, io </p></div></div><div class="code"><div class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le mode strict c’est le bien…</p></div></div><div class="code"><div class="wrapper"><span class="hljs-pi">  'use strict'</span>;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>C&#39;est le <code>$</code> de jQuery : appeler <code>init()</code> quand le DOM est prêt.</p></div></div><div class="code"><div class="wrapper">  $(init);
 
-  $(init);
-
-  <span class="hljs-keyword">var</span> container;
-
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
-    container = $(<span class="hljs-string">'#commentsList'</span>);
-    <span class="hljs-keyword">if</span> (container.length) {
+  <span class="hljs-keyword">var</span> container;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="initialisation-contextuelle">Initialisation contextuelle</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
+    container = $(<span class="hljs-string">'#commentsList'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>On est sur une page avec la liste des commentaires ?  Écouter les Web Sockets !
+(pour info, <code>container</code> serait un <code>&lt;tbody&gt;</code>).</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-keyword">if</span> (container.length) {
       initSockets();
     }
-  }
-
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initSockets</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">var</span> socket = io.connect();
-    socket.on(<span class="hljs-string">'new-comment'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(html)</span> </span>{
-      container.prepend(html);
-      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="couteur-web-sockets">Écouteur Web Sockets</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initSockets</span><span class="hljs-params">()</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Sans déconner, c&#39;est tout.  Si.  Juré.  Merci <a href="http://socket.io/">Socket.IO</a> !</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-keyword">var</span> socket = io.connect();</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Pour toute notif de commentaire émanant du serveur…</p></div></div><div class="code"><div class="wrapper">    socket.on(<span class="hljs-string">'new-comment'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(html)</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>…incruster ça en haut de la liste…</p></div></div><div class="code"><div class="wrapper">      container.prepend(html);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>…et dès que c&#39;est désérialisé dans le DOM, faire un micro-effet à deux balles
+pour attirer l&#39;attention.</p></div></div><div class="code"><div class="wrapper">      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
         container.find(<span class="hljs-string">'tr:first'</span>).hide().fadeIn();
       }, <span class="hljs-number">0</span>);
     });

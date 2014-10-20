@@ -774,10 +774,57 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "public/node-demo.js",
             "targetPath": "public/node-demo",
             "pageTitle": "public/node-demo",
-            "title": "node-demo"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Client Web Sockets",
+                "slug": "client-web-sockets",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Initialisation contextuelle",
+                    "slug": "initialisation-contextuelle"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Écouteur Web Sockets",
+                    "slug": "couteur-web-sockets"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Client Web Sockets"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Initialisation contextuelle",
+                "slug": "initialisation-contextuelle"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Écouteur Web Sockets",
+                "slug": "couteur-web-sockets"
+              },
+              "depth": 2
+            }
+          ]
         }
       ]
     }, {
