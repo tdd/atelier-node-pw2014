@@ -1,28 +1,45 @@
-<!DOCTYPE html><html lang="en"><head><title>models/user</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="models/user"><meta name="groc-project-path" content="models/user.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">models/user.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-pi">'use strict'</span>;
+<!DOCTYPE html><html lang="en"><head><title>models/user</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="models/user"><meta name="groc-project-path" content="models/user.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">models/user.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="modle--commentaire">Modèle : Commentaire</h1></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le mode strict c’est le bien…</p></div></div><div class="code"><div class="wrapper"><span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
-
-<span class="hljs-keyword">var</span> userSchema = mongoose.Schema({
-  _id:      <span class="hljs-built_in">String</span>,
-  name:     <span class="hljs-built_in">String</span>,
-  provider: <span class="hljs-built_in">String</span>,
-  joinedAt: { type: <span class="hljs-built_in">Date</span>, <span class="hljs-keyword">default</span>: <span class="hljs-built_in">Date</span>.now }
-});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>jshint maxparams:4 </p></div></div><div class="code"><div class="wrapper">userSchema.statics.findOrCreateByAuth = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findOrCreateByAuth</span><span class="hljs-params">(id, name, provider, done)</span> </span>{
+<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="schma">Schéma</h2>
+<p>Mongoose nous fait définir des <a href="http://mongoosejs.com/docs/guide.html">schémas</a>
+qui représentent la structure, les règles, la validation et les
+extensions de méthodes de nos documents.  C’est extrêmement utile, et
+les possibilités sont particulièrement riches.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> userSchema = mongoose.Schema({</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Au lieu de la clé primaire par défaut (un <a href="http://docs.mongodb.org/manual/reference/object-id/">ObjectId</a>),
+on utilisera ici une valeur issue du fournisseur d&#39;authentification (ex. local, Facebook, Twitter),
+ce qui d&#39;ailleurs pourrait bien poser souci si on rajoutait des fournisseurs dont les clés
+rentrent en conflit, mais pour la démo, ici, ça suffira…</p></div></div><div class="code"><div class="wrapper">  _id:      <span class="hljs-built_in">String</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le nom complet (si on peut l&#39;avoir via le <em>callback</em> OAuth) de l&#39;utilisateur.</p></div></div><div class="code"><div class="wrapper">  name:     <span class="hljs-built_in">String</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le fournisseur d&#39;authentification.  Dans notre démo, ce sera <code>&#39;local&#39;</code>, <code>&#39;facebook&#39;</code> ou
+<code>&#39;twitter&#39;</code>.</p></div></div><div class="code"><div class="wrapper">  provider: <span class="hljs-built_in">String</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le moment de création du compte, avec sa valeur par défaut.</p></div></div><div class="code"><div class="wrapper">  joinedAt: { type: <span class="hljs-built_in">Date</span>, <span class="hljs-keyword">default</span>: <span class="hljs-built_in">Date</span>.now }
+});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="mthodes-statiques-custom">Méthodes statiques custom</h2>
+<p>Tout ajout à la propriété <code>statics</code> du schéma équipe les modèles dérivés de ces méthodes
+statiques.  On aurait la même chose en mode instance avec la propriété <code>methods</code> du schéma.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="callback-finalisant-lauthentification">Callback finalisant l’authentification</h3>
+<p>Lors des callbacks d&#39;authentification de Passport, quelle que soit la stratégie, il nous
+délègue l&#39;obtention de l&#39;objet représentant l&#39;utilisateur.  C&#39;est généralement asynchrone…
+Ici on récupère l&#39;ID, le nom complet éventuel, le fournisseur, et un callback de Passport
+qui est censé prendre une erreur éventuelle en premier (convention Node) et l&#39;instance
+<code>User</code> en cas de succès en second.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>On a ici fait le choix, assez rare en pratique, de fusionner inscription (<em>sign in</em>) et
+connexion (<em>log in</em>) : si le compte n&#39;existe pas, on le crée à la volée.  Y&#39;a des services
+ou c&#39;est une approche très sympa.  C&#39;est aussi pour nous l&#39;occasion de montrer une fonctionnalité
+sympa de MongoDB en action : <a href="http://docs.mongodb.org/manual/tutorial/modify-documents/#upsert-option">l’upsert</a>
+qui tente une mise à jour, et si elle ne trouve pas l&#39;entrée, l&#39;insère à la volée, tout ça de
+façon atomique.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>jshint maxparams:4 </p></div></div><div class="code"><div class="wrapper">userSchema.statics.findOrCreateByAuth = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findOrCreateByAuth</span><span class="hljs-params">(id, name, provider, done)</span> </span>{
   <span class="hljs-keyword">var</span> User = <span class="hljs-keyword">this</span>;
-  User.update(</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Recherche</p></div></div><div class="code"><div class="wrapper">    { _id: id, provider : provider },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Mise à jour (l&#39;id est supposé être celui de la recherche)</p></div></div><div class="code"><div class="wrapper">    { name: name, provider: provider },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Activation du mode upsert (insertion si non trouvé)</p></div></div><div class="code"><div class="wrapper">    { upsert: <span class="hljs-literal">true</span> },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Forwarder l&#39;erreur éventuelle, mais à défaut transmettre l&#39;id comme valeur résultante.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, numAffected, details)</span> </span>{
+  User.update(</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Critères de recherche</p></div></div><div class="code"><div class="wrapper">    { _id: id, provider : provider },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Infos pour la mise à jour (si on a trouvé <em>via</em> la recherche)</p></div></div><div class="code"><div class="wrapper">    { name: name, provider: provider },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Activation du mode upsert (insertion si non trouvé)</p></div></div><div class="code"><div class="wrapper">    { upsert: <span class="hljs-literal">true</span> },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Forwarder l&#39;erreur éventuelle, mais à défaut transmettre l&#39;id comme valeur résultante.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, numAffected, details)</span> </span>{
       <span class="hljs-keyword">if</span> (err) {
         <span class="hljs-keyword">return</span> done(err);
-      }
-
-      <span class="hljs-keyword">if</span> (details.updatedExisting) {
+      }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Si on existait déjà, et qu&#39;on est donc à jour, renvoyer l&#39;ID
+(et non l&#39;entité <code>User</code>, qu&#39;on n&#39;a d&#39;ailleurs pas sous la main là tout de suite,
+c&#39;est pourquoi le <a href="../controllers/users.html">contrôleur d&#39;authentification</a>)
+sérialise sans rien faire : on lui passe déjà l&#39;ID, et non le modèle, il le reprend
+tel quel).</p></div></div><div class="code"><div class="wrapper">      <span class="hljs-keyword">if</span> (details.updatedExisting) {
         <span class="hljs-keyword">return</span> done(<span class="hljs-literal">null</span>, id);
-      }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>L&#39;upsert n&#39;aura pas forcé les defaults…  On les met à jour ici.</p></div></div><div class="code"><div class="wrapper">      User.update(
+      }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>L&#39;upsert n&#39;aura pas forcé les defaults…  On les met à jour ici.  Un peu dommage
+et discutable pour le coup, mais bon, on compense…</p></div></div><div class="code"><div class="wrapper">      User.update(
         { _id: id, provider: provider },
         { joinedAt: <span class="hljs-built_in">Date</span>.now() },
         <span class="hljs-literal">null</span>,
         <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{ done(err, id); }
       );
     });
-};
-
-<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'User'</span>, userSchema);</div></div></div></div></body></html>
+};</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="export-du-modle">Export du modèle</h2></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Chaque module de modèle publie un modèle Mongoose basé sur le schéma ainsi défini.
+Pour en savoir plus sur la distinction entre schéma et modèle dans Mongoose,
+<a href="http://mongoosejs.com/docs/models.html">jetez un œil par ici</a>.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'User'</span>, userSchema);</div></div></div></div></body></html>

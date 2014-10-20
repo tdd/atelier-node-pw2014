@@ -1,14 +1,17 @@
-<!DOCTYPE html><html lang="en"><head><title>models/connection</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="models/connection"><meta name="groc-project-path" content="models/connection.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">models/connection.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-pi">'use strict'</span>;
+<!DOCTYPE html><html lang="en"><head><title>models/connection</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="models/connection"><meta name="groc-project-path" content="models/connection.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">models/connection.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="connexion-centralise-mongodb">Connexion centralisée MongoDB</h1></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>J‘utilise pas mal ce <em>pattern</em> dans mes applis Node basées sur MongoDB,
+afin de découpler la connexion des schémas et modèles.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le mode strict c’est le bien…</p></div></div><div class="code"><div class="wrapper"><span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
-mongoose.connect(<span class="hljs-string">'mongodb://localhost/nodepw14'</span>);
-
-<span class="hljs-keyword">var</span> db = mongoose.connection;
-db.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'✘ CANNOT CONNECT TO mongoDB DATABASE nodepw14!'</span>.red);
-});
-
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(onceReady)</span> </span>{
+<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="mise-en-place">Mise en place</h2></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le simple fait de requérir ce module tente de se connecter.
+Naturellement, en prod on utiliserait plutôt une variable d’environnement
+(genre <code>process.env.MONGOLAB_URI</code>) pour se connecter à la base. La
+syntaxe de type URL reste l&#39;approche préférée dans tous les cas.</p></div></div><div class="code"><div class="wrapper">mongoose.connect(<span class="hljs-string">'mongodb://localhost/nodepw14'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Si jamais on a un souci de connexion, assurons-nous de la signaler
+sur la console d’erreur du serveur.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> db = mongoose.connection;
+db.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>(Pour rappel, cet accesseur colorisant <code>.red</code> en fin de <code>String</code>
+vient du module <code>colors</code>, requis au démarrage par <code>server.js</code>)</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'✘ CANNOT CONNECT TO mongoDB DATABASE nodepw14!'</span>.red);
+});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="callback-de-disponibilit">Callback de disponibilité</h2></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Il n&#39;est pas nécessaire d&#39;appeler la fonction publiée par le module
+pour initialiser la connexion, mais elle est utile si le code appelant
+veut être notifié de la disponibilité de la connexion, comme c&#39;est le cas
+du <a href="../server.html">point d&#39;entrée de notre serveur</a>.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(onceReady)</span> </span>{
   <span class="hljs-keyword">if</span> (onceReady) {
     db.on(<span class="hljs-string">'open'</span>, onceReady);
   }

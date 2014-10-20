@@ -492,10 +492,73 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "models/comment.js",
             "targetPath": "models/comment",
             "pageTitle": "models/comment",
-            "title": "comment"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Modèle : Commentaire",
+                "slug": "modle--commentaire",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Schéma",
+                    "slug": "schma"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Méthodes statiques custom",
+                    "slug": "mthodes-statiques-custom"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Export du modèle",
+                    "slug": "export-du-modle"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Modèle : Commentaire"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Schéma",
+                "slug": "schma"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Méthodes statiques custom",
+                "slug": "mthodes-statiques-custom"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Export du modèle",
+                "slug": "export-du-modle"
+              },
+              "depth": 2
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -512,10 +575,57 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "models/connection.js",
             "targetPath": "models/connection",
             "pageTitle": "models/connection",
-            "title": "connection"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Connexion centralisée MongoDB",
+                "slug": "connexion-centralise-mongodb",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Mise en place",
+                    "slug": "mise-en-place"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Callback de disponibilité",
+                    "slug": "callback-de-disponibilit"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Connexion centralisée MongoDB"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Mise en place",
+                "slug": "mise-en-place"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Callback de disponibilité",
+                "slug": "callback-de-disponibilit"
+              },
+              "depth": 2
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -532,10 +642,95 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "models/user.js",
             "targetPath": "models/user",
             "pageTitle": "models/user",
-            "title": "user"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Modèle : Commentaire",
+                "slug": "modle--commentaire",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Schéma",
+                    "slug": "schma"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Méthodes statiques custom",
+                    "slug": "mthodes-statiques-custom"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Callback finalisant l’authentification",
+                        "slug": "callback-finalisant-lauthentification"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Export du modèle",
+                    "slug": "export-du-modle"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Modèle : Commentaire"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Schéma",
+                "slug": "schma"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Méthodes statiques custom",
+                "slug": "mthodes-statiques-custom"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Callback finalisant l’authentification",
+                    "slug": "callback-finalisant-lauthentification"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Export du modèle",
+                "slug": "export-du-modle"
+              },
+              "depth": 2
+            }
+          ]
         }
       ]
     }, {
