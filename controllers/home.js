@@ -8,7 +8,7 @@
 // -------------
 //
 // Notre module exporte une fonction qui configure le contrôleur en
-// enregistrant les middleswares et routes nécessaires.
+// enregistrant les middlewares et routes nécessaires.
 module.exports = function homeController(app) {
   // Micro-middleware qui incrémente juste un compteur de vue à chaque requête
   // GET, histoire d’illustrer les sessions en début d'atelier.

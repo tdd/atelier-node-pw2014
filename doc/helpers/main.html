@@ -1,24 +1,21 @@
-<!DOCTYPE html><html lang="en"><head><title>helpers/main</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="helpers/main"><meta name="groc-project-path" content="helpers/main.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">helpers/main.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">'moment'</span>);
-<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);
-
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mainHelpers</span><span class="hljs-params">(app)</span> </span>{
-  app.use(setupHelpers);
+<!DOCTYPE html><html lang="en"><head><title>helpers/main</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="helpers/main"><meta name="groc-project-path" content="helpers/main.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">helpers/main.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="helpers">Helpers</h1></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Le mode strict c’est le bien…</p></div></div><div class="code"><div class="wrapper"><span class="hljs-pi">'use strict'</span>;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="mise-en-place">Mise en place</h2>
+<p>Notre module exporte une fonction qui configure le contrôleur en
+enregistrant les middlewares et routes nécessaires.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mainHelpers</span><span class="hljs-params">(app)</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Un seul middleware, qui est là pour injecter toutes les infos nécessaires dans les
+variables de vue pour la réponse.</p></div></div><div class="code"><div class="wrapper">  app.use(setupHelpers);
 };
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setupHelpers</span><span class="hljs-params">(req, res, next)</span> </span>{
-  res.locals.flash = req.flash();
-  res.locals.csrf = req.csrfToken();
-
-  <span class="hljs-keyword">var</span> lang = _.chain(req.acceptsLanguages()).invoke(<span class="hljs-string">'split'</span>, <span class="hljs-string">'-'</span>).pluck(<span class="hljs-number">0</span>).uniq().first().value();
-  moment.locale(lang);
-  _.extend(res.locals, HELPERS);
-
-  next();
-}
-
-
-<span class="hljs-keyword">var</span> HELPERS = {
-  formatStamp: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatStamp</span><span class="hljs-params">(date)</span> </span>{
-    <span class="hljs-keyword">return</span> moment(date).format(<span class="hljs-string">'LLLL'</span>);
+<span class="hljs-keyword">var</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">'moment'</span>);
+<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="middleware-dinjection">Middleware d’injection</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setupHelpers</span><span class="hljs-params">(req, res, next)</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>On publie le flash dans <code>flash</code> et le token CSRF dans <code>csrf</code>.</p></div></div><div class="code"><div class="wrapper">  res.locals.flash = req.flash();
+  res.locals.csrf = req.csrfToken();</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>On prend également le premier code de langue préféré par le navigateur (en retirant les
+suffixes de pays pour se concentrer sur les codes ISO-3166-2 de langue), et on configure
+<a href="http://momentjs.com/">Moment.js</a> avec, pour que les formatages des helpers respectent
+la préférence.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>(Si nos comptes utilisateurs avaient un champ de préférence, on lui donnerait la préférence,
+en regardant par exemple <code>req.user &amp;&amp; req.user.language</code>.)</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Remarquez au passage l&#39;intérêt d&#39;<a href="http://underscorejs.org/">Underscore</a> sur ce coup, qui
+nous épargne un code long, verbeux et potentiellement bogué pour le même algo…</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-keyword">var</span> lang = _.chain(req.acceptsLanguages()).invoke(<span class="hljs-string">'split'</span>, <span class="hljs-string">'-'</span>).pluck(<span class="hljs-number">0</span>).uniq().first().value();
+  moment.locale(lang);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>L’injection des fonctions helpers à proprement parler.</p></div></div><div class="code"><div class="wrapper">  _.extend(res.locals, HELPERS);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Et bien sûr, on passe la main à la suite des middlewares…</p></div></div><div class="code"><div class="wrapper">  next();
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="fonctions-helpers">Fonctions helpers</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> HELPERS = {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Formatage d’horodatage de commentaire (ex. listing)</p></div></div><div class="code"><div class="wrapper">  formatStamp: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatStamp</span><span class="hljs-params">(date)</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>On utilise le code spécial <code>LLLL</code> qui reprend les conventions de formatage
+de la langue active pour Moment.  Par exemple, en français, on aurait un truc
+du genre « samedi 18 octobre 2014 16:45 » alors qu&#39;en anglais ça donnerait plutôt
+“Saturday October 18, 2014 4:45PM”.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-keyword">return</span> moment(date).format(<span class="hljs-string">'LLLL'</span>);
   }
 };</div></div></div></div></body></html>

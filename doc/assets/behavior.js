@@ -399,10 +399,73 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "helpers/main.js",
             "targetPath": "helpers/main",
             "pageTitle": "helpers/main",
-            "title": "main"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Helpers",
+                "slug": "helpers",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Mise en place",
+                    "slug": "mise-en-place"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Middleware d’injection",
+                    "slug": "middleware-dinjection"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Fonctions helpers",
+                    "slug": "fonctions-helpers"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Helpers"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Mise en place",
+                "slug": "mise-en-place"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Middleware d’injection",
+                "slug": "middleware-dinjection"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Fonctions helpers",
+                "slug": "fonctions-helpers"
+              },
+              "depth": 2
+            }
+          ]
         }
       ]
     }, {

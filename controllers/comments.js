@@ -8,7 +8,7 @@
 // -------------
 //
 // Notre module exporte une fonction qui configure le contrôleur en
-// enregistrant les middleswares et routes nécessaires.
+// enregistrant les middlewares et routes nécessaires.
 module.exports = function commentsController(app) {
   // Middleware exigeant l’authentification.
   app.use('/comments', function(req, res, next) {

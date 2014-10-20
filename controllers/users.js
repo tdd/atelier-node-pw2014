@@ -8,7 +8,7 @@
 // -------------
 //
 // Notre module exporte une fonction qui configure le contrôleur en
-// enregistrant les middleswares et routes nécessaires.
+// enregistrant les middlewares et routes nécessaires.
 module.exports = function usersController(app) {
   // Micro-middleware qui fournit aux vues une variable `currentUser`
   // pour l'utilisateur actif fourni par Passport dans `req.user` (s'il y
