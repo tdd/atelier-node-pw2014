@@ -82,7 +82,7 @@ function listLoginOptions(req, res) {
 }
 
 function localLogin(req, res) {
-  res.render('users/login', { title: 'Identifie-toi', csrf: req.csrfToken() });
+  res.render('users/login', { title: 'Identifie-toi' });
 }
 
 function logOut(req, res) {

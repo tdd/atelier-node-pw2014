@@ -7,6 +7,7 @@ module.exports = function mainHelpers(app) {
 
 function setupHelpers(req, res, next) {
   res.locals.flash = req.flash();
+  res.locals.csrf = req.csrfToken();
 
   var lang = _.chain(req.acceptsLanguages()).invoke('split', '-').pluck(0).uniq().first().value();
   moment.locale(lang);

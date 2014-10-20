@@ -51,5 +51,5 @@ function listComments(req, res) {
 }
 
 function newComment(req, res) {
-  res.render('comments/new', { title: 'Nouveau commentaire', csrf: req.csrfToken() });
+  res.render('comments/new', { title: 'Nouveau commentaire' });
 }
