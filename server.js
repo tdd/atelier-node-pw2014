@@ -1,6 +1,13 @@
 // Point d’entrée du serveur
 // =========================
 
+// Dépôt GitHub
+// ------------
+//
+// Retrouvez le code source, les slides et toutes les infos sur cet atelier
+// [Paris Web 2014](http://www.paris-web.fr/2014/conferences/) **Node.js démystifié**
+// **[sur GitHub](https://github.com/tdd/atelier-node-pw2014)**.
+
 // Le mode strict c’est le bien…
 'use strict';
 

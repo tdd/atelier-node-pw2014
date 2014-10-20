@@ -34,11 +34,22 @@ Chaque commit du dépôt, au-delà du tag `start`, constitue une étape intermé
 
 Chaque tag constitue le **début** de l'étape qu'il annonce, le commit qui le suit complétant cette étape.  On se cale sur un tag de façon classique, par exemple pour démarrer :
 
-    $ git checkout 00-start
+    (master) $ git checkout -b atelier
+    (atelier) $ git reset --hard 00-start
 
 Pour voir tous les tags :
 
     $ git tag
+
+Pour recaler votre version sur un tag donné, et repartir de là, par exemple pour attaquer la mise en place de la connexion MongoDB :
+
+    (atelier) $ git reset --hard 10-mongodb-cnx
+
+## Code source annoté
+
+Retrouvez toute la codebase annotée dans le dossier `doc` (démarrez par exemple avec `server.html`).  Vous pouvez aussi le consulter en ligne [directement par ce lien](http://delicious-insights.com/talks/parisweb2014-node-annotated/server.html).
+
+Vous y retrouverez toutes les explications qui ont été fournies durant l’atelier.
 
 ## Modules utilisés
 
