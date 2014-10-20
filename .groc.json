@@ -3,6 +3,7 @@
     "controllers/**/*.js",
     "helpers/**/*.js",
     "models/**/*.js",
+    "public/node-demo.js",
     "server.js",
     "package.json"
   ],

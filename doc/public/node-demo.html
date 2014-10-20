@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><title>public/node-demo</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="public/node-demo"><meta name="groc-project-path" content="public/node-demo.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">public/node-demo.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>global $, io </p></div></div><div class="code"><div class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-pi">  'use strict'</span>;
+
+  $(init);
+
+  <span class="hljs-keyword">var</span> container;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
+    container = $(<span class="hljs-string">'#commentsList'</span>);
+    <span class="hljs-keyword">if</span> (container.length) {
+      initSockets();
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initSockets</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> socket = io.connect();
+    socket.on(<span class="hljs-string">'new-comment'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(html)</span> </span>{
+      container.prepend(html);
+      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        container.find(<span class="hljs-string">'tr:first'</span>).hide().fadeIn();
+      }, <span class="hljs-number">0</span>);
+    });
+  }
+})();</div></div></div></div></body></html>

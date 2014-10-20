@@ -29,10 +29,57 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "controllers/comments.js",
             "targetPath": "controllers/comments",
             "pageTitle": "controllers/comments",
-            "title": "comments"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Contrôleur : Commentaires",
+                "slug": "contrleur--commentaires",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Mise en place",
+                    "slug": "mise-en-place"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Gestionnaires de routes",
+                    "slug": "gestionnaires-de-routes"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Contrôleur : Commentaires"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Mise en place",
+                "slug": "mise-en-place"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Gestionnaires de routes",
+                "slug": "gestionnaires-de-routes"
+              },
+              "depth": 2
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -49,10 +96,41 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "controllers/home.js",
             "targetPath": "controllers/home",
             "pageTitle": "controllers/home",
-            "title": "home"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Contrôleur : Accueil",
+                "slug": "contrleur--accueil",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Mise en place",
+                    "slug": "mise-en-place"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Contrôleur : Accueil"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Mise en place",
+                "slug": "mise-en-place"
+              },
+              "depth": 2
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -69,10 +147,181 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "controllers/users.js",
             "targetPath": "controllers/users",
             "pageTitle": "controllers/users",
-            "title": "users"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Contrôleur : Authentification",
+                "slug": "contrleur--authentification",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Mise en place",
+                    "slug": "mise-en-place"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Stratégies d’authentification",
+                    "slug": "stratgies-dauthentification"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Stratégie locale",
+                        "slug": "stratgie-locale"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Stratégie Facebook",
+                        "slug": "stratgie-facebook"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Stratégie Twitter",
+                        "slug": "stratgie-twitter"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "(Dé)sérialisations",
+                    "slug": "dsrialisations"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Sérialisation",
+                        "slug": "srialisation"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Désérialisation",
+                        "slug": "dsrialisation"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Gestionnaires de route",
+                    "slug": "gestionnaires-de-route"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Contrôleur : Authentification"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Mise en place",
+                "slug": "mise-en-place"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Stratégies d’authentification",
+                "slug": "stratgies-dauthentification"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Stratégie locale",
+                    "slug": "stratgie-locale"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Stratégie Facebook",
+                    "slug": "stratgie-facebook"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Stratégie Twitter",
+                    "slug": "stratgie-twitter"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "(Dé)sérialisations",
+                "slug": "dsrialisations"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Sérialisation",
+                    "slug": "srialisation"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Désérialisation",
+                    "slug": "dsrialisation"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Gestionnaires de route",
+                "slug": "gestionnaires-de-route"
+              },
+              "depth": 2
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -89,10 +338,41 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "controllers/web-sockets.js",
             "targetPath": "controllers/web-sockets",
             "pageTitle": "controllers/web-sockets",
-            "title": "web-sockets"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Contrôleur : Web Sockets",
+                "slug": "contrleur--web-sockets",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Singleton",
+                    "slug": "singleton"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Contrôleur : Web Sockets"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Singleton",
+                "slug": "singleton"
+              },
+              "depth": 2
+            }
+          ]
         }
       ]
     }, {
@@ -212,6 +492,36 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
       },
       "depth": 1,
       "outline": []
+    }, {
+      "type": "folder",
+      "data": {
+        "path": "public",
+        "title": "public"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/Users/tdd/perso/paris-web/atelier-2014/public/node-demo.js",
+            "projectPath": "public/node-demo.js",
+            "targetPath": "public/node-demo",
+            "pageTitle": "public/node-demo",
+            "title": "node-demo"
+          },
+          "depth": 2,
+          "outline": []
+        }
+      ]
     }, {
       "type": "file",
       "data": {

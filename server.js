@@ -81,8 +81,8 @@ app.use(serveStatic(path.join(__dirname, 'public')));
 // Pour l’authentification, on utilise [Passport](http://passportjs.org/).  Celui-ci requiert au
 // moins le *middleware* fourni par `passport.initialize()` pour étendre les requêtes avec les
 // propriétés (ex. `user`) et méthodes (ex. `isAuthenticated()`) nécessaires, ainsi que, si on
-// utilise les sessions pour persister l'authentification, celui fourni par `passport.session()`,
-// qui s'occupera de (dé)sérialiser un objet représentant l'utilisateur courant.  Les *hooks* pour
+// utilise les sessions pour persister l'authentification, celui fourni par `passport.session()`.
+// Il faudra pouvoir (dé)sérialiser un objet représentant l'utilisateur courant : les *hooks* pour
 // ce faire seront dans notre [contrôleur utilisateurs](./controllers/users.html).  Il est
 // évidemment nécessaire que `req.session` soit déjà mis en place, donc ici que `cookieSession`
 // soit enregistré par `app.use(…)` avant `passport.session()`.

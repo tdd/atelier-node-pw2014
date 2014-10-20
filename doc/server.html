@@ -32,8 +32,8 @@ qui équipe les requêtes de la méthode <code>flash(…)</code>.</p></div></div
 avec le bon type MIME et tout…  Merci <a href="https://github.com/expressjs/serve-static">serve-static</a>.</p></div></div><div class="code"><div class="wrapper">app.use(serveStatic(path.join(__dirname, <span class="hljs-string">'public'</span>)));</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Pour l’authentification, on utilise <a href="http://passportjs.org/">Passport</a>.  Celui-ci requiert au
 moins le <em>middleware</em> fourni par <code>passport.initialize()</code> pour étendre les requêtes avec les
 propriétés (ex. <code>user</code>) et méthodes (ex. <code>isAuthenticated()</code>) nécessaires, ainsi que, si on
-utilise les sessions pour persister l&#39;authentification, celui fourni par <code>passport.session()</code>,
-qui s&#39;occupera de (dé)sérialiser un objet représentant l&#39;utilisateur courant.  Les <em>hooks</em> pour
+utilise les sessions pour persister l&#39;authentification, celui fourni par <code>passport.session()</code>.
+Il faudra pouvoir (dé)sérialiser un objet représentant l&#39;utilisateur courant : les <em>hooks</em> pour
 ce faire seront dans notre <a href="./controllers/users.html">contrôleur utilisateurs</a>.  Il est
 évidemment nécessaire que <code>req.session</code> soit déjà mis en place, donc ici que <code>cookieSession</code>
 soit enregistré par <code>app.use(…)</code> avant <code>passport.session()</code>.</p></div></div><div class="code"><div class="wrapper">app.use(passport.initialize());
